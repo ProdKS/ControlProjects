@@ -18,8 +18,8 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\kisli\source\repos\ManagingIndividualProjects\ManagingIndividualProjects
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/Home/Authorization.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBdXRob3JpemF0aW9uLmNzaHRtbA==
+[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/Auth/Authorization.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxBdXRob3JpemF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/Home/Index.cshtml]
