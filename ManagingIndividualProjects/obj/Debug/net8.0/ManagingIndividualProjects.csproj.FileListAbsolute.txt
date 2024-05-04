@@ -28,3 +28,4 @@ C:\Users\kisli\source\repos\ManagingIndividualProjects\ManagingIndividualProject
 C:\Users\kisli\source\repos\ManagingIndividualProjects\ManagingIndividualProjects\obj\Debug\net8.0\ManagingIndividualProjects.pdb
 C:\Users\kisli\source\repos\ManagingIndividualProjects\ManagingIndividualProjects\obj\Debug\net8.0\ManagingIndividualProjects.genruntimeconfig.cache
 C:\Users\kisli\source\repos\ManagingIndividualProjects\ManagingIndividualProjects\obj\Debug\net8.0\ref\ManagingIndividualProjects.dll
+C:\Users\kisli\source\repos\ManagingIndividualProjects\ManagingIndividualProjects\obj\Debug\net8.0\ManagingIndividualProjects.sourcelink.json
