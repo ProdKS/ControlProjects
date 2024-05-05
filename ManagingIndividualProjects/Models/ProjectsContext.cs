@@ -47,6 +47,10 @@ public partial class ProjectsContext : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(100)
                 .IsFixedLength();
+            entity.HasOne(d => d.DepartmentNavigation)
+                  .WithMany(p => p.Groups)
+                  .HasForeignKey(d => d.DepartmentId)
+                  .HasConstraintName("FK_Departaments");
         });
         modelBuilder.Entity<IndividualProject>(entity =>
         {

@@ -49,7 +49,7 @@ namespace ManagingIndividualProjects.Controllers
 
                 } else if(nowUser.Role == 5) 
                 {
-                    return RedirectToAction("AdminPage", "AdminPage");
+                    return RedirectToAction("DepartmentListView", "DepartmentPage");
                 }                
             }
            return View();

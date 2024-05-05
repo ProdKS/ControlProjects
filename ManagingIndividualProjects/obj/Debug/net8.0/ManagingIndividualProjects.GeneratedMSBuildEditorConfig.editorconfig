@@ -18,16 +18,32 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\kisli\source\repos\ManagingIndividualProjects\ManagingIndividualProjects
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/AdminPage/AdminPage.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5QYWdlXEFkbWluUGFnZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/Authorization/Authorization.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yaXphdGlvblxBdXRob3JpemF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/ClassroomPage/ClassrommPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3Nyb29tUGFnZVxDbGFzc3JvbW1QYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/DepartmentPage/DepartmentDetailView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFBhZ2VcRGVwYXJ0bWVudERldGFpbFZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/DepartmentPage/DepartmentListView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFBhZ2VcRGVwYXJ0bWVudExpc3RWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/DepartmentPage/GroupDetailView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFBhZ2VcR3JvdXBEZXRhaWxWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/GroupView/GroupDetailView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JvdXBWaWV3XEdyb3VwRGV0YWlsVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/GroupView/GroupView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JvdXBWaWV3XEdyb3VwVmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/Home/Index.cshtml]

@@ -1,0 +1,16 @@
+﻿@model List<Department>
+@{
+    ViewData["Title"] = "Админ страница(Отделения)";
+}
+
+<body>
+    <h1 class="title">Отделения</h1>
+    <div class="ContainerDeprtaments">
+        @foreach (var departament in Model)
+        {
+            <div>
+                <a href="@Url.Action("DepartmentDetailView", "DepartmentPage",  new { departmentId = departament.Id })">@departament.Name</a>
+            </div>
+        }
+    </div>
+</body>

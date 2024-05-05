@@ -1,5 +1,17 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model StudentViewModel
+
 @{
+    ViewData["Title"] = "Админ страница(Студенты)";
 }
+
+<body>
+    <h1 class="title">Студенты</h1>
+    <div class="ContainerDeprtaments">
+        @foreach (var student in Model.Students)
+        {
+            <div>
+                <a href="@Url.Action("GroupDetailView", "GroupView", new {userId = student.Id})">@student.Surname</a>
+            </div>
+        }
+    </div>
+</body>
