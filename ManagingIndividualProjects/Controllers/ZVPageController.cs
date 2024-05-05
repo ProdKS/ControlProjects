@@ -4,7 +4,7 @@ namespace ManagingIndividualProjects.Controllers
 {
     public class ZVPageController : Controller
     {
-        public IActionResult Index()
+        public IActionResult ZVPage()
         {
             return View();
         }

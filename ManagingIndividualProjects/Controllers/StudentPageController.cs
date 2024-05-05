@@ -4,7 +4,7 @@ namespace ManagingIndividualProjects.Controllers
 {
     public class StudentPageController : Controller
     {
-        public IActionResult Index()
+        public IActionResult StudentPage()
         {
             return View();
         }

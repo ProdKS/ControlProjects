@@ -54,6 +54,12 @@ public partial class ProjectsContext : DbContext
             entity.Property(e => e.NameTheme)
                 .HasMaxLength(200)
                 .IsUnicode(false);
+            entity.Property(e => e.Gradle)
+                .IsUnicode(false)
+                .HasColumnType("int");
+            entity.Property(e => e.FeedBack)
+                .HasMaxLength(2000)
+                .IsUnicode(false);
             entity.HasOne(d => d.StatusNavigation).WithMany(p => p.IndividualProjects)
                 .HasForeignKey(d => d.Status)
                 .HasConstraintName("FK_IndividualProjects_Statuses");

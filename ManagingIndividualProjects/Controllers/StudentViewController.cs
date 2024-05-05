@@ -2,9 +2,9 @@
 
 namespace ManagingIndividualProjects.Controllers
 {
-    public class TeacherController : Controller
+    public class StudentViewController : Controller
     {
-        public IActionResult Index()
+        public IActionResult StudentView()
         {
             return View();
         }

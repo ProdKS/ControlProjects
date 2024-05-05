@@ -2,9 +2,9 @@
 
 namespace ManagingIndividualProjects.Controllers
 {
-    public class ClassroompageController : Controller
+    public class ClassroomPageController : Controller
     {
-        public IActionResult Index()
+        public IActionResult ClassroomPage()
         {
             return View();
         }

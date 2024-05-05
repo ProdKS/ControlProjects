@@ -17,7 +17,8 @@ public partial class IndividualProject
 
     public long? Status { get; set; }
 
-    public long? Gradle { get; set; }
+    public int? Gradle { get; set; }
+    public string? FeedBack { get; set; }
 
     public virtual Status? StatusNavigation { get; set; }
 

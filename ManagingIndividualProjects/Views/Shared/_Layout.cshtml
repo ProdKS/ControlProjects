@@ -20,11 +20,30 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
-                        </li>
-                    </ul>                    
+                        <ul class="navbar-nav flex-grow-1">
+                            @if (ViewContext.RouteData.Values["Action"].ToString() == "Index")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
+                                </li>
+                            }
+                            @if (ViewBag.CurrentRole == 5)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark @(ViewContext.RouteData.Values["Action"].ToString() == "AdminPage" ? "active" : "")" asp-area="" asp-controller="AdminPage" asp-action="AdminPage">Отделения</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="AdminPage" asp-action="AdminPage">Группы</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="AdminPage" asp-action="AdminPage">Студенты</a>
+                                </li>
+                            }
+                            else
+                            {
+
+                            }
+                        </ul>
                     @if(ViewContext.RouteData.Values["Action"].ToString() == "Index")
                     {
                         <ul class="navbar-nav">

@@ -66,3 +66,7 @@
         .login-container button[type="submit"]:hover {
             background-color: #6c9bff;
         }
+.active-link {
+    color: #0f6cbf;
+    font-weight: bold;
+}
