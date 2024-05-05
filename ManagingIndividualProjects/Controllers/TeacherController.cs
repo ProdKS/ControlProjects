@@ -2,9 +2,9 @@
 
 namespace ManagingIndividualProjects.Controllers
 {
-    public class AuthController : Controller
+    public class TeacherController : Controller
     {
-        public IActionResult Authorization()
+        public IActionResult Index()
         {
             return View();
         }

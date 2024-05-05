@@ -1,17 +1,14 @@
-﻿@*
-
-*@
-@{
-
+﻿@{
+    ViewData["Title"] = "Авторизация";
 }
 <body id="bodyAuth">
     <div id="contAuth">
         <div class="login-container">
             <h2>Вход</h2>
-            <form action="/Account/Login" method="post">
+            <form asp-action="Authorization" asp-controller="Authorization" method="post">
                 <input type="text" name="username" placeholder="Логин" required>
                 <input type="password" name="password" placeholder="Пароль" required>
-                <input type="submit" value="Войти">
+                <button type="submit" value="Войти"></button>
             </form>
         </div>
     </div>

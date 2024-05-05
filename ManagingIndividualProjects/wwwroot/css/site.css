@@ -53,16 +53,16 @@
         box-sizing: border-box;
     }
 
-    .login-container input[type="submit"] {
-        width: 100%;
-        background-color: #007bff;
-        color: white;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+        .login-container button[type="submit"] {
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-        .login-container input[type="submit"]:hover {
+        .login-container button[type="submit"]:hover {
             background-color: #6c9bff;
         }
