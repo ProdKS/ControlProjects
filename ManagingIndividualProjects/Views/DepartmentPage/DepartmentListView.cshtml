@@ -4,12 +4,14 @@
 }
 
 <body>
-    <h1 class="title">Отделения</h1>
-    <div class="ContainerDeprtaments">
+    <div class="title-div">
+        <h1 class="title">Отделения</h1>
+    </div>
+    <div class="container-deprtaments">
         @foreach (var departament in Model)
         {
-            <div>
-                <a href="@Url.Action("DepartmentDetailView", "DepartmentPage",  new { departmentId = departament.Id })">@departament.Name</a>
+            <div class="link-block-dep">
+                <a class="nav-link text-dark" href="@Url.Action("DepartmentDetailView", "DepartmentPage",  new {departmentId = departament.Id })">@departament.Name</a>
             </div>
         }
     </div>

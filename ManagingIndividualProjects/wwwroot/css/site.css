@@ -70,9 +70,66 @@
     color: #0f6cbf;
     font-weight: bold;
     }
-    .title {
-    margin-top: 20px;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    .title-div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        width: 60%;
+        margin: 10px auto;
+        padding: 20px;
+    }
+    .container-deprtaments {
+        width: 500px;
+        height: 150px;
+        border-radius: 10px;
+        display: block;
+        margin: 10px auto;
+        padding: 3px;
+    }
+    .link-block {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #333;
+        transition: background-color 0.3s ease;
+    }
+    .link-block:hover {
+        background-color: #ddd;
+    }
+    .div-glav{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content:center;
+        text-align:center;
+        width: 50%;
+        padding: 20px;
+        margin: 10px auto;
+    }
+    .container-students{
+        background: #f7f7f7;
+        width: 300px;
+        height: 150px;
+        border-radius: 10px;
+        display:block;
+        margin: 10px auto;
+        padding: 3px;
+    }
+    .link-block-dep {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #333;
+        transition: background-color 0.3s ease;
+    }
+    .link-block-dep:hover {
+        background-color: #ddd;
     }

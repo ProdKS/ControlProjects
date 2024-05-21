@@ -1,5 +1,16 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<Group>
 @{
+    ViewData["Title"] = "Cтраница зав. отделения";
 }
+
+<body>
+    <h1 class="title">Группы</h1>
+    <div class="ContainerDeprtaments">
+        @foreach (var groups in Model)
+        {
+            <div>
+                <a href="@Url.Action("GroupDetailView", "ZVPage", new {groupsId = groups.Id})">@groups.Name</a>
+            </div>
+        }
+    </div>
+</body>

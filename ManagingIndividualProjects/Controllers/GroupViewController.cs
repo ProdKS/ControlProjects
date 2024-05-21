@@ -27,7 +27,7 @@ namespace ManagingIndividualProjects.Controllers
             }            
             var model = new UserDetail();
             model.NameGroup = group.Name;
-            model.Users = await workBD.Users.Where(x => x.GroupDep == groupsId).ToListAsync();
+            model.Users = await workBD.Users.Where(x => x.GroupDep == groupsId && x.Role == 1).ToListAsync();
             return View(model);
         }
     }

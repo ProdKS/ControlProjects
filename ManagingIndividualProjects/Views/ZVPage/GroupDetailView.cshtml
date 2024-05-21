@@ -1,0 +1,15 @@
+﻿@model UserDetail
+@{
+    ViewData["Title"] = "Админ страница(Отделения определенное)";
+}
+<body>
+    <h1 class="title">@Model.NameGroup</h1>
+    <div class="ContainerDeprtaments">
+        @foreach (var users in Model.Users)
+        {
+            <div>
+                <a href="@Url.Action("GroupDetailView", "GroupView", new {userId = users.Id})">@users.Surname</a>
+            </div>
+        }
+    </div>
+</body>

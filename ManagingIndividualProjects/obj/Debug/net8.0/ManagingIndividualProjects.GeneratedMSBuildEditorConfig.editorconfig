@@ -22,8 +22,8 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yaXphdGlvblxBdXRob3JpemF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/ClassroomPage/ClassrommPage.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3Nyb29tUGFnZVxDbGFzc3JvbW1QYWdlLmNzaHRtbA==
+[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/ClassroomPage/ClassroomPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3Nyb29tUGFnZVxDbGFzc3Jvb21QYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/DepartmentPage/DepartmentDetailView.cshtml]
@@ -62,12 +62,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFBhZ2VcU3R1ZGVudFBhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/StudentViewEmploye/StudentViewEmploye.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFZpZXdFbXBsb3llXFN0dWRlbnRWaWV3RW1wbG95ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/StudentView/StudentView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFZpZXdcU3R1ZGVudFZpZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/TeacherPage/TeacherPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlclBhZ2VcVGVhY2hlclBhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/ZVPage/GroupDetailView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWlZQYWdlXEdyb3VwRGV0YWlsVmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/ZVPage/ZVPage.cshtml]

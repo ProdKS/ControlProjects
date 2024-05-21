@@ -1,5 +1,23 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IndividualProjectModel
 @{
+
 }
+<body>
+    <div class="ContainerDeprtaments">
+        @if(Model.IndividualProjects == null)
+        {
+            <div>
+                <p>У вас нет проекта</p>
+            </div>
+        }
+        else
+        {
+        @foreach (var IndividualProject in Model.IndividualProjects)
+            {                       
+                    <div>
+                        <a href="@Url.Action("StudentPage", "GroupView", new {individual = IndividualProject.Id})">@IndividualProject.NameTheme</a>
+                    </div>                      
+            }
+        }
+    </div>
+</body>

@@ -36,4 +36,5 @@ public partial class User
     public virtual Role? RoleNavigation { get; set; }
 
     public virtual IndividualProject? ThemeNavigation { get; set; }
+    public User currentUser;
 }

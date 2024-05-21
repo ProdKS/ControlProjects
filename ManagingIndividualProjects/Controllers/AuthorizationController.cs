@@ -6,6 +6,7 @@ namespace ManagingIndividualProjects.Controllers
 {
     public class AuthorizationController : Controller
     {
+
         private ProjectsContext workBD;
         public AuthorizationController(ProjectsContext workbd)
         {
@@ -19,7 +20,7 @@ namespace ManagingIndividualProjects.Controllers
         [HttpPost]
         public async Task<IActionResult> Authorization(ModelForAuth authorization)
         {
-            User nowUser = await workBD.Users.FirstOrDefaultAsync(x => x.Login == authorization.userName && x.Password == authorization.password);
+            User nowUser = await workBD.Users.FirstOrDefaultAsync(x => x.Login == authorization.userName && x.Password == authorization.password);            
             if (nowUser != null)
             {
                 HttpContext.Session.SetString("Id", nowUser.Id.ToString());
@@ -35,19 +36,21 @@ namespace ManagingIndividualProjects.Controllers
                 // 1 - student, 2 - classroom, 3 - teacher, 4 - zvotdel, 5 - sotr y4 chasti
                 if(nowUser.Role == 1)
                 {
-
+                    return RedirectToAction("StudentPage", "StudentPage");
                 }
                 else if (nowUser.Role == 2)
                 {
-
+                    return RedirectToAction("ClassroomPage", "ClassroomPage");
                 }
                 else if(nowUser.Role == 3) 
                 { 
                 
-                } else if (nowUser.Role == 4)
-                {
-
-                } else if(nowUser.Role == 5) 
+                } 
+                else if (nowUser.Role == 4)
+                {                   
+                    return RedirectToAction("ZVPage", "ZVPage");
+                } 
+                else if(nowUser.Role == 5) 
                 {
                     return RedirectToAction("DepartmentListView", "DepartmentPage");
                 }                

@@ -1,0 +1,20 @@
+﻿@model StudentViewModel
+
+@{
+    ViewData["Title"] = "Админ страница(Студенты)";
+}
+
+<body>
+    <h1 class="title">Студенты</h1>
+    <div class="ContainerDeprtaments">
+        @foreach (var student in Model.Students)
+        {
+            <div>
+                <a href="@Url.Action("GroupDetailView", "GroupView", new {userId = student.Id})">>
+                    <p>@student.Surname @student.NameAndPat</p>
+                    <p>Номер телефона @student.Number</p>
+                </a>
+            </div>
+        }
+    </div>
+</body>
