@@ -4,10 +4,16 @@
 }
 <body>
     <div class="ContainerDeprtaments">
-        @if(Model.IndividualProjects == null)
+        @if(Model.IndividualProjects.Count == 0)
         {
-            <div>
-                <p>У вас нет проекта</p>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">У вас нет назначенного проекта</h5>
+                    <p class="card-text">
+                        Вы можете предложить тему и выбрать дисциплину самостоятеньно.
+                    </p>
+                    <a href="@Url.Action("AddProject", "StudentPage")" class="card-link">Подать заявку</a>
+                </div>
             </div>
         }
         else

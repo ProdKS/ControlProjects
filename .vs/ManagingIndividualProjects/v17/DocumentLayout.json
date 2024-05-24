@@ -3,76 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\views\\studentpage\\studentpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\views\\studentpage\\studentpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\models\\modelforaddingprojects.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\models\\modelforaddingprojects.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\controllers\\studentpagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\controllers\\studentpagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\models\\projectscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\models\\projectscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\controllers\\studentviewemployecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\controllers\\studentviewemployecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\models\\individualprojectmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\models\\individualprojectmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\views\\departmentpage\\departmentlistview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\views\\departmentpage\\departmentlistview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\views\\departmentpage\\groupdetailview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\views\\departmentpage\\groupdetailview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\views\\groupview\\groupview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\views\\groupview\\groupview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\controllers\\authorizationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\controllers\\authorizationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\views\\studentpage\\addproject.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\views\\studentpage\\addproject.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\controllers\\groupviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\controllers\\groupviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\views\\studentviewemploye\\studentviewemploye.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\views\\studentviewemploye\\studentviewemploye.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\controllers\\classroompagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\controllers\\classroompagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\models\\individualproject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\models\\individualproject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\models\\userdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\models\\userdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\models\\modelforauth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\models\\modelforauth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\views\\authorization\\authorization.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\views\\authorization\\authorization.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -87,64 +35,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "StudentPage.cshtml",
-              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\StudentPage\\StudentPage.cshtml",
-              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Views\\StudentPage\\StudentPage.cshtml",
-              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\StudentPage\\StudentPage.cshtml",
-              "RelativeToolTip": "ManagingIndividualProjects\\Views\\StudentPage\\StudentPage.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-20T23:53:07.319Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "GroupDetailView.cshtml",
-              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\DepartmentPage\\GroupDetailView.cshtml",
-              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Views\\DepartmentPage\\GroupDetailView.cshtml",
-              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\DepartmentPage\\GroupDetailView.cshtml",
-              "RelativeToolTip": "ManagingIndividualProjects\\Views\\DepartmentPage\\GroupDetailView.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-06T08:54:45.921Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DepartmentListView.cshtml",
-              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\DepartmentPage\\DepartmentListView.cshtml",
-              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Views\\DepartmentPage\\DepartmentListView.cshtml",
-              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\DepartmentPage\\DepartmentListView.cshtml",
-              "RelativeToolTip": "ManagingIndividualProjects\\Views\\DepartmentPage\\DepartmentListView.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAYAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-05T20:23:53.295Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "IndividualProjectModel.cs",
-              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Models\\IndividualProjectModel.cs",
-              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Models\\IndividualProjectModel.cs",
-              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Models\\IndividualProjectModel.cs",
-              "RelativeToolTip": "ManagingIndividualProjects\\Models\\IndividualProjectModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAnAAAA",
+              "Title": "ModelForAddingProjects.cs",
+              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Models\\ModelForAddingProjects.cs",
+              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Models\\ModelForAddingProjects.cs",
+              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Models\\ModelForAddingProjects.cs",
+              "RelativeToolTip": "ManagingIndividualProjects\\Models\\ModelForAddingProjects.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T00:17:35.204Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "StudentViewEmployeController.cs",
-              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Controllers\\StudentViewEmployeController.cs",
-              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Controllers\\StudentViewEmployeController.cs",
-              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Controllers\\StudentViewEmployeController.cs",
-              "RelativeToolTip": "ManagingIndividualProjects\\Controllers\\StudentViewEmployeController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-20T23:28:51.26Z",
+              "WhenOpened": "2024-05-23T21:02:02.212Z",
               "EditorCaption": ""
             },
             {
@@ -155,155 +53,45 @@
               "RelativeDocumentMoniker": "ManagingIndividualProjects\\Controllers\\StudentPageController.cs",
               "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Controllers\\StudentPageController.cs",
               "RelativeToolTip": "ManagingIndividualProjects\\Controllers\\StudentPageController.cs",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAkwCEAAAAIAAAA",
+              "ViewState": "AQIAABYAAAAAAAAAAAAcwCcAAABEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-20T23:24:48.501Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-23T21:00:07.594Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 2,
               "Title": "AuthorizationController.cs",
               "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Controllers\\AuthorizationController.cs",
               "RelativeDocumentMoniker": "ManagingIndividualProjects\\Controllers\\AuthorizationController.cs",
               "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Controllers\\AuthorizationController.cs",
               "RelativeToolTip": "ManagingIndividualProjects\\Controllers\\AuthorizationController.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAgwCAAAAA0AAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAAA5wCIAAABMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-14T16:54:47.516Z"
+              "WhenOpened": "2024-05-23T20:59:56.147Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "ManagingIndividualProjects\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-20T23:32:35.023Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "GroupView.cshtml",
-              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\GroupView\\GroupView.cshtml",
-              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Views\\GroupView\\GroupView.cshtml",
-              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\GroupView\\GroupView.cshtml",
-              "RelativeToolTip": "ManagingIndividualProjects\\Views\\GroupView\\GroupView.cshtml",
+              "DocumentIndex": 4,
+              "Title": "Authorization.cshtml",
+              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\Authorization\\Authorization.cshtml",
+              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Views\\Authorization\\Authorization.cshtml",
+              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\Authorization\\Authorization.cshtml",
+              "RelativeToolTip": "ManagingIndividualProjects\\Views\\Authorization\\Authorization.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-21T00:07:30.398Z"
+              "WhenOpened": "2024-05-23T20:58:23.46Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ProjectsContext.cs",
-              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Models\\ProjectsContext.cs",
-              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Models\\ProjectsContext.cs",
-              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Models\\ProjectsContext.cs",
-              "RelativeToolTip": "ManagingIndividualProjects\\Models\\ProjectsContext.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAUwCAAAAALAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-14T17:08:47.902Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "GroupViewController.cs",
-              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Controllers\\GroupViewController.cs",
-              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Controllers\\GroupViewController.cs",
-              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Controllers\\GroupViewController.cs",
-              "RelativeToolTip": "ManagingIndividualProjects\\Controllers\\GroupViewController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-20T23:41:11.244Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "ClassroomPageController.cs",
-              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Controllers\\ClassroomPageController.cs",
-              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Controllers\\ClassroomPageController.cs",
-              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Controllers\\ClassroomPageController.cs",
-              "RelativeToolTip": "ManagingIndividualProjects\\Controllers\\ClassroomPageController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-14T16:50:52.827Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "StudentViewEmploye.cshtml",
-              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\StudentViewEmploye\\StudentViewEmploye.cshtml",
-              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Views\\StudentViewEmploye\\StudentViewEmploye.cshtml",
-              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\StudentViewEmploye\\StudentViewEmploye.cshtml",
-              "RelativeToolTip": "ManagingIndividualProjects\\Views\\StudentViewEmploye\\StudentViewEmploye.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "DocumentIndex": 3,
+              "Title": "AddProject.cshtml",
+              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\StudentPage\\AddProject.cshtml",
+              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Views\\StudentPage\\AddProject.cshtml",
+              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\StudentPage\\AddProject.cshtml",
+              "RelativeToolTip": "ManagingIndividualProjects\\Views\\StudentPage\\AddProject.cshtml",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAkwBsAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-06T06:14:54.358Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "IndividualProject.cs",
-              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Models\\IndividualProject.cs",
-              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Models\\IndividualProject.cs",
-              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Models\\IndividualProject.cs",
-              "RelativeToolTip": "ManagingIndividualProjects\\Models\\IndividualProject.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-07T09:21:46.364Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Models\\User.cs",
-              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Models\\User.cs",
-              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Models\\User.cs",
-              "RelativeToolTip": "ManagingIndividualProjects\\Models\\User.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAUwCYAAAAbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-06T08:44:19.645Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "UserDetail.cs",
-              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Models\\UserDetail.cs",
-              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Models\\UserDetail.cs",
-              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Models\\UserDetail.cs",
-              "RelativeToolTip": "ManagingIndividualProjects\\Models\\UserDetail.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-06T08:44:43.788Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "ModelForAuth.cs",
-              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Models\\ModelForAuth.cs",
-              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Models\\ModelForAuth.cs",
-              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Models\\ModelForAuth.cs",
-              "RelativeToolTip": "ManagingIndividualProjects\\Models\\ModelForAuth.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-07T09:21:47.709Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "site.css",
-              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\wwwroot\\css\\site.css",
-              "RelativeDocumentMoniker": "ManagingIndividualProjects\\wwwroot\\css\\site.css",
-              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\wwwroot\\css\\site.css",
-              "RelativeToolTip": "ManagingIndividualProjects\\wwwroot\\css\\site.css",
-              "ViewState": "AQIAAEgAAAAAAAAAAAAAAFIAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-05-06T05:45:44.558Z"
+              "WhenOpened": "2024-05-23T20:50:12.883Z"
             }
           ]
         }
