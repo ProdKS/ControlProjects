@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Авторизация";
 }
+
 <body id="bodyAuth">
     <div id="contAuth">
         <div class="login-container">
@@ -8,7 +9,7 @@
             <form asp-action="Authorization" asp-controller="Authorization" method="post">
                 <input type="text" name="username" placeholder="Логин" required>
                 <input type="password" name="password" placeholder="Пароль" required>
-                <button type="submit" value="Войти"></button>
+                <button type="submit" value="Войти">Войти</button>
             </form>
         </div>
     </div>

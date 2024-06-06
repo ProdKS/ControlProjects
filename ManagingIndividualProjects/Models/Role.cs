@@ -5,9 +5,11 @@ namespace ManagingIndividualProjects.Models;
 
 public partial class Role
 {
-    public long Id { get; set; }
+    public int Id { get; set; }
 
     public string? Name { get; set; }
 
-    public virtual ICollection<User> Users { get; set; } = new List<User>();
+    public virtual ICollection<Employee> Employees { get; set; } = new List<Employee>();
+
+    public virtual ICollection<Student> Students { get; set; } = new List<Student>();
 }

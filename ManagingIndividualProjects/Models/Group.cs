@@ -5,11 +5,21 @@ namespace ManagingIndividualProjects.Models;
 
 public partial class Group
 {
-    public long Id { get; set; }
+    public int Id { get; set; }
 
     public string? Name { get; set; }
 
-    public long DepartmentId { get; set; }
-    public virtual ICollection<User> Users { get; set; } = new List<User>();
-    public virtual Department? DepartmentNavigation { get; set; }
+    public int? IsDepartment { get; set; }
+
+    public int? ClassroomTeacher { get; set; }
+
+    public int? DepartmentId { get; set; }
+
+    public virtual Employee? ClassroomTeacherNavigation { get; set; }
+
+    public virtual Department? Department { get; set; }
+
+    public virtual ICollection<EmployeeGroup> EmployeeGroups { get; set; } = new List<EmployeeGroup>();
+
+    public virtual ICollection<Student> Students { get; set; } = new List<Student>();
 }

@@ -1,0 +1,64 @@
+﻿@model StudentsView
+@{
+    ViewData["Title"] = "Админ страница(Отделения определенное)";
+}
+<body>
+    <div class="title-div">
+        <h1 class="title">@Model.nameGroup</h1>
+    </div>
+    <div style="flex-wrap: wrap; display: flex">
+        @foreach (var users in Model.Students)
+        {
+            string descStatusProject = "";
+            var haveProject = Model.IndividualProjects.FirstOrDefault(d => d.Id == users.Id);
+            string debtor = "";
+            @if (Model.DebtorStatus.ContainsKey(users.Id) && Model.DebtorStatus[users.Id])
+            {
+                debtor = "Должник";
+            }
+            else
+            {
+                debtor = "Не должник";
+            }
+            if (haveProject == null)
+            {
+                descStatusProject = "тема не выбрана";
+            }
+            else
+            {
+                descStatusProject = "тема выбрана";
+            }
+            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column" style="margin-top: 10px; margin-right: 10px; width: 30%">
+                <div class="card bg-light d-flex flex-fill">
+                    <div class="card-header text-muted border-bottom-0">@users.Surname @users.Name @users.Pat</div>
+                    <div class="card-body pt-0">
+                        <div class="row">
+                            <div class="col-7" style="width: 100%">
+                                <h2 class="lead"><b></b></h2>
+                                @if (Model.DebtorStatus.ContainsKey(users.Id) && Model.DebtorStatus[users.Id])
+                                {
+                                    <p class="text-muted text-sm"><b>Статус: <b style="color: red">@debtor</b></b></p>
+                                }
+                                else
+                                {
+                                    <p class="text-muted text-sm"><b>Статус: <b style="color: green">@debtor</b></b></p>
+                                }
+                                <ul class="ml-4 mb-0 fa-ul text-muted">
+                                    <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>@descStatusProject</li>
+                                    <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23 52</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="text-right">
+                            <a href="@Url.Action("StudentProjectsView", "DepartmentPage", new { studentId = users.Id })" class="btn btn-sm btn-primary">
+                                <i class="fas fa-user"></i> Подробнее
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</body>

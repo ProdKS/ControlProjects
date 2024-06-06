@@ -1,0 +1,25 @@
+﻿@model IndividualProjectModel
+@{
+
+}
+<body>
+    <div class="ContainerDeprtaments">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Добавление проекта</h3>
+            </div>
+            <form asp-action="EditProjectTheme" asp-controller="TeacherPage" method="post">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="inputThemeName">Тема индивидуального проекта</label>
+                        <input asp-for="nameTheme" value="" class="form-control" id="inputThemeName" placeholder="Напишите тему">
+                    </div>
+                    <label for="myDropdown">Выберите опцию:</label>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>

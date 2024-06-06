@@ -10,8 +10,8 @@
     <div class="container-deprtaments">
         @foreach (var departament in Model)
         {
-            <div class="link-block-dep">
-                <a class="nav-link text-dark" href="@Url.Action("DepartmentDetailView", "DepartmentPage",  new {departmentId = departament.Id })">@departament.Name</a>
+            <div class="card bg-light d-flex flex-fill" style="margin-top: 20px;">
+                <a class="card-header text-muted border-bottom-0" style="text-align: center;" href="@Url.Action("DepartmentDetailView", "DepartmentPage",  new {departmentId = departament.Id })">@departament.Name</a>
             </div>
         }
     </div>

@@ -5,7 +5,7 @@ namespace ManagingIndividualProjects.Models;
 
 public partial class Status
 {
-    public long Id { get; set; }
+    public int Id { get; set; }
 
     public string? Name { get; set; }
 

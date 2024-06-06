@@ -1,15 +1,54 @@
-﻿@model UserDetail
+﻿@model StudentsView
 @{
     ViewData["Title"] = "Админ страница(Отделения определенное)";
 }
 <body>
-    <h1 class="title">@Model.NameGroup</h1>
-    <div class="ContainerDeprtaments">
-        @foreach (var users in Model.Users)
-        {
-            <div>
-                <a href="@Url.Action("GroupDetailView", "GroupView", new {userId = users.Id})">@users.Surname</a>
-            </div>
-        }
+    <div class="title-div">
+        <h1 class="title">@Model.nameGroup</h1>
     </div>
+    @foreach (var users in Model.Students)
+    {
+        string descStatusProject = "";
+        var haveProject = Model.IndividualProjects.FirstOrDefault(d => d.Id == users.Id);
+
+        if (haveProject != null)
+        {
+            descStatusProject = "тема не выбрана";
+        }
+        else
+        {
+            descStatusProject = "тема выбрана";
+        }
+        <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column" style="margin-top: 10px">
+            <div class="card bg-light d-flex flex-fill">
+                <div class="card-header text-muted border-bottom-0">@users.Surname @users.Name @users.Pat</div>
+                <div class="card-body pt-0">
+                    <div class="row">
+                        <div class="col-7" style="width: 100%">
+                            <h2 class="lead"><b></b></h2>
+                            @if (haveProject != null)
+                            {
+                                <p class="text-muted text-sm"><b>Статус: <b style="color: red">@descStatusProject</b></b></p>
+                            }
+                            else
+                            {
+                                <p class="text-muted text-sm"><b>Статус: <b style="color: green">@descStatusProject</b></b></p>
+                            }
+                            <ul class="ml-4 mb-0 fa-ul text-muted">
+                                <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Address: Demo Street 123, Demo City 04312, NJ</li>
+                                <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23 52</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="text-right">
+                        <a href="@Url.Action("StudentProjectsView", "StudentView", new { studentId = users.Id })" class="btn btn-sm btn-primary">
+                            <i class="fas fa-user"></i> Подробнее
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 </body>

@@ -1,14 +1,17 @@
 ﻿@model DepartmentDetail
+
 @{
     ViewData["Title"] = "Админ страница(Отделения определенное)";
 }
 <body>
-    <h1 class="title">@Model.NameDepartment</h1>
-    <div class="ContainerDeprtaments">
+    <div class="title-div">
+        <h1 class="title">@Model.NameDepartment</h1>
+    </div>
+    <div class="container-deprtaments">
         @foreach (var groups in Model.Groups)
         {
-            <div>
-                <a href="@Url.Action("GroupDetailView", "DepartmentPage", new {groupid = groups.Id})">@groups.Name</a>
+            <div class="card bg-light d-flex flex-fill" style="margin-top: 20px;">
+                <a class="card-header text-muted border-bottom-0" style="text-align: center;" href="@Url.Action("GroupDetailView", "DepartmentPage", new {groupid = groups.Id})">@groups.Name</a>
             </div>
         }
     </div>

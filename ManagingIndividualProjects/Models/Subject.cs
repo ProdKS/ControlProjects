@@ -5,9 +5,13 @@ namespace ManagingIndividualProjects.Models;
 
 public partial class Subject
 {
-    public long Id { get; set; }
+    public int Id { get; set; }
 
     public string? Name { get; set; }
 
+    public int? Teacherid { get; set; }
+
     public virtual ICollection<IndividualProject> IndividualProjects { get; set; } = new List<IndividualProject>();
+
+    public virtual Employee? Teacher { get; set; }
 }

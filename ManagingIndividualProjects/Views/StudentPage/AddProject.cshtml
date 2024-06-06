@@ -11,19 +11,14 @@
             <form asp-action="AddProject" asp-controller="StudentPage" method="post">
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        <label for="inputThemeName">Тема вашего индивидуального проекта</label>
+                        <input asp-for="nameTheme" class="form-control" id="inputThemeName" placeholder="Напишите тему">
                     </div>
                     <label for="myDropdown">Выберите опцию:</label>
-                    <select id="myDropdown" name="SelectedOption" class="form-control">
-                        <option value="">Выберите...</option>
-                        @foreach (var item in ViewBag.DataList)
+                    <select id="myDropdown" name="SelectedOption" asp-for="subjectID" class="form-control">
+                        @foreach (var option in Model.SubjectOptions)
                         {
-                            <option value="@item.Value">@item.Text</option>
+                            <option value="@option.Value">@option.Text</option>
                         }
                     </select>
                 </div>

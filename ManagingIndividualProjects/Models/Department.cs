@@ -5,10 +5,9 @@ namespace ManagingIndividualProjects.Models;
 
 public partial class Department
 {
-    public long Id { get; set; }
+    public int Id { get; set; }
 
     public string? Name { get; set; }
 
-    public virtual ICollection<User> Users { get; set; } = new List<User>();
     public virtual ICollection<Group> Groups { get; set; } = new List<Group>();
 }

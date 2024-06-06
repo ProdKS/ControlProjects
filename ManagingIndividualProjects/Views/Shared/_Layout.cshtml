@@ -34,12 +34,14 @@
                             else if (ViewBag.CurrentRole == 2)
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="ClassroomPage" asp-action="ClassroomPage">Студенты</a>
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="ClassroomPage" asp-action="ClassroomPage">Группы</a>
                                 </li>
                             }
                             else if (ViewBag.CurrentRole == 3)
                             {
-                                
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="TeacherPage" asp-action="TeacherPage">Страница учителя</a>
+                                </li>
                             }                           
                             else if (ViewBag.CurrentRole == 4)
                             {
