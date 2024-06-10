@@ -51,8 +51,7 @@ namespace ManagingIndividualProjects.Controllers
                                     SubjectID = s.Id,
                                     SubjectName = s.Name,
                                     TeacherFullName = t.Surname + " " + t.Name + " " + t.Pat
-                                }).ToList();
-            
+                                }).ToList();            
             var model = new IndividualProjectModel
             {
                 
@@ -121,9 +120,14 @@ namespace ManagingIndividualProjects.Controllers
             }
             var model = new FeedbackViewModel();
             model.status = status;
+            model.feedback = individualProject.Feedback;
             model.gradle = gradle;
             model.IndividualProject = individualProject;
             return View(model);
+        }
+        public async Task<IActionResult> goBack()
+        {            
+            return RedirectToAction("StudentPage");
         }
         public async Task<IActionResult> AcceptChangedTheme(int projectID)
         {
@@ -155,6 +159,53 @@ namespace ManagingIndividualProjects.Controllers
             }
             return RedirectToAction("StudentPage", "StudentPage");
 
+        }
+        public IActionResult EditTheme(int idproject)
+        {
+            int groupStudent = Convert.ToInt32(HttpContext.Session.GetString("Group"));
+            var teacherIDs = (from eg in workBD.EmployeeGroups
+                              where eg.GroupId == groupStudent
+                              select eg.TeacherId).ToList();
+            var subjectInfos = (from s in workBD.Subjects
+                                join t in workBD.Employees on s.Teacherid equals t.Id
+                                where teacherIDs.Contains(s.Teacherid)
+                                select new
+                                {
+                                    SubjectID = s.Id,
+                                    SubjectName = s.Name,
+                                    TeacherFullName = t.Surname + " " + t.Name + " " + t.Pat
+                                }).ToList();
+
+            var project = workBD.IndividualProjects.FirstOrDefault(p => p.Id == idproject);
+
+            var model = new IndividualProjectModel
+            {
+                SubjectOptions = new List<SelectListItem>
+                {
+                    new SelectListItem { Value = "", Text = "Выберите..." }
+                },
+                idproject = idproject,
+                nameTheme = project.NameTheme,
+            };
+
+            foreach (var info in subjectInfos)
+            {
+                string result = $"{info.SubjectName} ({info.TeacherFullName})";
+                model.SubjectOptions.Add(new SelectListItem { Value = info.SubjectID.ToString(), Text = result });
+            }
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditTheme(IndividualProjectModel model)
+        {
+            int idStudent = Convert.ToInt32(HttpContext.Session.GetString("Id"));
+            var projectToUpdate = await workBD.IndividualProjects.FindAsync(model.idproject);
+            if (projectToUpdate != null)
+            {
+                projectToUpdate.NameTheme = model.nameTheme;
+                await workBD.SaveChangesAsync();
+            }
+            return RedirectToAction("StudentPage");
         }
     }
 }

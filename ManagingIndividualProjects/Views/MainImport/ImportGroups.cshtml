@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Import Groups";
+    var departments = ViewBag.Departments as List<ManagingIndividualProjects.Models.Department>;
+}
+
+<div class="container">
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Import Groups</h3>
+        </div>
+        <form asp-action="ImportGroups" method="post" enctype="multipart/form-data">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="myDropdown">Выберите отделение:</label>
+                    <select id="myDropdown" name="selectedDepartmentId" class="form-control">
+                        @foreach (var department in departments)
+                        {
+                            <option value="@department.Id">@department.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Выберите файл</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" name="file" class="custom-file-input" id="exampleInputFile">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Импорт</button>
+            </div>
+        </form>
+    </div>
+</div>

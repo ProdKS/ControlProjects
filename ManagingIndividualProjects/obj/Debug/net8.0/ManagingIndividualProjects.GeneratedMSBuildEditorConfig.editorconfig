@@ -22,12 +22,24 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aG9yaXphdGlvblxBdXRob3JpemF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/ClassroomPage/AboutFeedback.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3Nyb29tUGFnZVxBYm91dEZlZWRiYWNrLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/ClassroomPage/ClassroomPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3Nyb29tUGFnZVxDbGFzc3Jvb21QYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/ClassroomPage/ClassroomPageView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3Nyb29tUGFnZVxDbGFzc3Jvb21QYWdlVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/ClassroomPage/StudentProjectsView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xhc3Nyb29tUGFnZVxTdHVkZW50UHJvamVjdHNWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/DepartmentPage/AboutFeedback.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVwYXJ0bWVudFBhZ2VcQWJvdXRGZWVkYmFjay5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/DepartmentPage/DepartmentDetailView.cshtml]
@@ -62,6 +74,38 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/MainImport/CheckRules.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFpbkltcG9ydFxDaGVja1J1bGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/MainImport/ImportClassrooms.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFpbkltcG9ydFxJbXBvcnRDbGFzc3Jvb21zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/MainImport/ImportGroups.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFpbkltcG9ydFxJbXBvcnRHcm91cHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/MainImport/ImportGroupsEmployee.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFpbkltcG9ydFxJbXBvcnRHcm91cHNFbXBsb3llZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/MainImport/ImportStudents.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFpbkltcG9ydFxJbXBvcnRTdHVkZW50cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/MainImport/ImportSubjects.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFpbkltcG9ydFxJbXBvcnRTdWJqZWN0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/MainImport/ImportTeachers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFpbkltcG9ydFxJbXBvcnRUZWFjaGVycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/MainImport/MainImport.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFpbkltcG9ydFxNYWluSW1wb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -78,6 +122,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFBhZ2VcQWRkUHJvamVjdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/StudentPage/EditTheme.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFBhZ2VcRWRpdFRoZW1lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/StudentPage/StudentPage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFBhZ2VcU3R1ZGVudFBhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -92,6 +140,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/StudentView/StudentView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFZpZXdcU3R1ZGVudFZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/TeacherPage/AddEditGrade.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlclBhZ2VcQWRkRWRpdEdyYWRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/TeacherPage/AddFeedback.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlclBhZ2VcQWRkRmVlZGJhY2suY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/TeacherPage/CheckEditFeedback.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhY2hlclBhZ2VcQ2hlY2tFZGl0RmVlZGJhY2suY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/kisli/source/repos/ManagingIndividualProjects/ManagingIndividualProjects/Views/TeacherPage/EditProjectTheme.cshtml]

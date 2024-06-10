@@ -1,16 +1,60 @@
-﻿@model List<Group>
+﻿@model DepartmentDetail
 @{
     ViewData["Title"] = "Cтраница зав. отделения";
 }
 
 <body>
-    <h1 class="title">Группы</h1>
-    <div class="ContainerDeprtaments">
-        @foreach (var groups in Model)
+    <div class="title-div">
+        <h1 class="title">Группы</h1>
+        
+    </div>
+    <div style="display: flex; flex-wrap: wrap;">
+        <a href="@Url.Action("GenerateDocDepartment", "ZVPage")" class="btn btn-sm btn-primary" style="margin-top: 5px; float: left;">
+            <i class="fas fa-user"></i> Генерация отчета по отделению
+        </a>
+        <a href="@Url.Action("GenerateDebtorsReportDepartment", "ZVPage")" class="btn btn-sm btn-primary" style="margin-top: 5px; margin-left:3px; float: right;">
+            <i class="fas fa-user"></i> Генерация отчета по должникам
+        </a>
+    </div>
+    <div style="flex-wrap: wrap; display:flex">
+        @foreach (var group in Model.Groups)
         {
-            <div class="card bg-light d-flex flex-fill" style="margin-top: 20px">
-                <a class="card-header text-muted border-bottom-0" style="text-align: center;" href="@Url.Action("GroupDetailView", "ZVPage", new {groupsId = groups.Id})">@groups.Name</a>
+            Employee classroomTeacher = Model.employees.SingleOrDefault(g => g.Id == group.ClassroomTeacher);
+            string nameClass = "Отсутствует";
+            if (classroomTeacher != null)
+            {
+                nameClass = classroomTeacher.Surname + " " + classroomTeacher.Name + " " + classroomTeacher.Pat;
+            }
+            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column" style="margin-top: 10px; margin-right: 10px; width:30%">
+                <div class="card bg-light d-flex flex-fill">
+                    <div class="card-header text-muted border-bottom-0">Название группы: @group.Name</div>
+                    <div class="card-body pt-0">
+                        <div class="row">
+                            <div class="col-7" style="width: 100%">
+                                <h2 class="lead"><b></b></h2>
+                                <p class="text-muted text-sm"><b>Количество студентов: <b>@Model.StudentCounts[group.Id]</b></b></p>
+                                <ul class="ml-4 mb-0 fa-ul text-muted">
+                                    <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i>Классный руководитель: </span>@nameClass</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="text-right">
+                            <a href="@Url.Action("GroupDetailView", "ZVPage", new { groupsId = group.Id })" class="btn btn-sm btn-primary" style="margin-top: 5px">
+                                <i class="fas fa-user"></i> Подробнее
+                            </a>
+                            <a href="@Url.Action("GenerateDocGroup", "DepartmentPage", new { groupid = group.Id })" class="btn btn-sm btn-primary" style="margin-top: 5px">
+                                <i class="fas fa-user"></i> Генерация отчета по группе
+                            </a>
+                            <a href="@Url.Action("GenerateDocDebtorsGroup", "DepartmentPage", new { groupid = group.Id })" class="btn btn-sm btn-primary" style="margin-top: 5px">
+                                <i class="fas fa-user"></i> Генерация отчета по должникам
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         }
+    </div>
     </div>
 </body>

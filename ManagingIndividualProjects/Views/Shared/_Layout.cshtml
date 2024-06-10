@@ -42,6 +42,10 @@
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="TeacherPage" asp-action="TeacherPage">Страница учителя</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="ClassroomPage" asp-action="ClassroomPage">Группы</a>
+                                </li>
+
                             }                           
                             else if (ViewBag.CurrentRole == 4)
                             {
@@ -54,6 +58,7 @@
                             }
                             else if (ViewBag.CurrentRole == 5)
                             {
+
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="DepartmentPage" asp-controller="DepartmentPage" asp-action="DepartmentListView">Отделения</a>
                                 </li>
@@ -62,6 +67,9 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="StudentView" asp-action="StudentView">Студенты</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="MainImport" asp-action="MainImport">Добавление данных</a>
                                 </li>
                             }
                         </ul>

@@ -1,0 +1,87 @@
+﻿@*
+   
+*@
+@{
+}
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Страница для импорта данных</h5>
+            <p class="card-text">
+                Перед импортом крайне рекомендуется просмотреть правила и порядок.
+            </p>
+            <a href="@Url.Action("CheckRules", "MainImport")" class="card-link">Посмотреть правила</a>
+        </div>
+    </div>
+    <div style="flex-wrap: wrap; display: flex; margin-top: 10px">
+        <div class="card bg-light d-flex flex-fill">
+            <div class="card-header border-bottom-0"><h2>Импорт данных</h2></div>
+            <div class="card-body pt-0">
+                <div class="row">
+                    <div class="col-7" style="width: 100%">
+                        <h2 class="lead"><b>Файлы должны быть в формате csv</b></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="text-right">
+                    <a href="@Url.Action("ImportTeachers", "MainImport")" class="btn btn-sm btn-primary" style="margin-top:5px">
+                        <i class="fas fa-user"></i> Добавить преподавателей
+                    </a>
+                    <a href="@Url.Action("ImportClassrooms", "MainImport")" class="btn btn-sm btn-primary" style="margin-top:5px">
+                        <i class="fas fa-user"></i> Добавить классных руководителей
+                    </a>
+                    <a href="@Url.Action("ImportSubjects", "MainImport")" class="btn btn-sm btn-primary" style="margin-top:5px">
+                            <i class="fas fa-user"></i> Добавить дисциплины
+                    </a>
+                <a href="@Url.Action("ImportGroups", "MainImport")" class="btn btn-sm btn-primary" style="margin-top:5px">
+                            <i class="fas fa-user"></i> Добавить группы
+                        </a>
+                <a href="@Url.Action("ImportGroupsEmployee", "MainImport")" class="btn btn-sm btn-primary" style="margin-top:5px">
+                            <i class="fas fa-user"></i> Задать группам предметы
+                        </a>
+
+                <a href="@Url.Action("ImportStudents", "MainImport")" class="btn btn-sm btn-primary" style="margin-top:5px">
+                            <i class="fas fa-user"></i> Добавить студентов
+                        </a>
+                </div>
+            </div>
+        </div>
+    </div>
+     <div style="flex-wrap: wrap; display: flex; margin-top: 10px">
+        <div class="card bg-light d-flex flex-fill">
+            <div class="card-header border-bottom-0"><h2>Добавление данных</h2></div>
+            <div class="card-body pt-0">
+                <div class="row">
+                    <div class="col-7" style="width: 100%">
+                        <h2 class="lead"><b>Вы можете добавить данные в ручную</b></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="text-right">
+                    <a href="@Url.Action("StudentProjectsView", "StudentView")" class="btn btn-sm btn-primary" style="margin-top:5px">
+                        <i class="fas fa-user"></i> Добавить преподавателя
+                    </a>
+                     <a href="@Url.Action("ImportClassrooms", "MainImport")" class="btn btn-sm btn-primary" style="margin-top:5px">
+                        <i class="fas fa-user"></i> Добавить классного руководителя
+                    </a>
+                    <a href="@Url.Action("StudentProjectsView", "StudentView")" class="btn btn-sm btn-primary" style="margin-top:5px">
+                            <i class="fas fa-user"></i> Назначить классного руководителя
+                        </a>
+                    <a href="@Url.Action("StudentProjectsView", "StudentView")" class="btn btn-sm btn-primary" style="margin-top:5px">
+                            <i class="fas fa-user"></i> Добавить дисциплину
+                        </a>
+                    <a href="@Url.Action("StudentProjectsView", "StudentView")" class="btn btn-sm btn-primary" style="margin-top:5px">
+                            <i class="fas fa-user"></i> Добавить группу
+                        </a>
+                    <a href="@Url.Action("StudentProjectsView", "StudentView")" class="btn btn-sm btn-primary" style="margin-top:5px">
+                            <i class="fas fa-user"></i> Задать группам дисциплину
+                        </a>
+                    
+                    <a href="@Url.Action("StudentProjectsView", "StudentView")" class="btn btn-sm btn-primary" style="margin-top:5px">
+                            <i class="fas fa-user"></i> Добавить студента
+                        </a>
+                </div>
+            </div>
+        </div>
+    </div>  

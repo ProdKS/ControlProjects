@@ -1,4 +1,4 @@
-﻿@model List<Department>
+﻿@model DepartmentListViewModel
 @{
     ViewData["Title"] = "Админ страница(Отделения)";
 }
@@ -7,11 +7,34 @@
     <div class="title-div">
         <h1 class="title">Отделения</h1>
     </div>
-    <div class="container-deprtaments">
-        @foreach (var departament in Model)
+    <div style="flex-wrap: wrap; display:flex">
+        @foreach (var department in Model.Departments)
         {
-            <div class="card bg-light d-flex flex-fill" style="margin-top: 20px;">
-                <a class="card-header text-muted border-bottom-0" style="text-align: center;" href="@Url.Action("DepartmentDetailView", "DepartmentPage",  new {departmentId = departament.Id })">@departament.Name</a>
+            <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column" style="margin-top: 10px; margin-right: 10px; width:30%;">
+                <div class="card bg-light d-flex flex-fill">
+                    <div class="card-header border-bottom-0" style="font-weight:bold; font-size:large">@department.Name</div>
+                    <div class="card-body pt-0">
+                        <div class="row">
+                            <div class="col-7" style="width: 100%">
+                                <h2 class="lead"><b></b></h2>
+                                <p class="text-muted text-sm"><b>Количество групп: <b>@Model.groupsCounts[department.Id]</b></b></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="text-right">
+                            <a href="@Url.Action("DepartmentDetailView", "DepartmentPage", new { departmentId = department.Id })" class="btn btn-sm btn-primary">
+                                <i class="fas fa-user"></i> Подробнее
+                            </a>
+                            <a href="@Url.Action("GenerateDocDepartment", "DepartmentPage", new { departmentId = department.Id  })" class="btn btn-sm btn-primary">
+                                <i class="fas fa-user"></i> Генерация отчета по отделению
+                            </a>
+                            <a href="@Url.Action("GenerateDebtorsReportDepartment", "DepartmentPage", new { departmentId = department.Id  })" class="btn btn-sm btn-primary" style="margin-top: 5px">
+                                <i class="fas fa-user"></i> Генерация отчета по должникам
+                            </a>                        
+                        </div>
+                    </div>
+                </div>
             </div>
         }
     </div>

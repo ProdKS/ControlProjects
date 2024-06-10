@@ -23,8 +23,7 @@ namespace ManagingIndividualProjects.Controllers
             var debtorStatus = new Dictionary<int, bool>(); 
             foreach (var student in students)
             {
-                bool isDebtor = true; // Изначально считаем студента должником
-
+                bool isDebtor = true;
                 if (student.GroupDep.HasValue)
                 {
                     var groupStudent = await workBD.Groups.FirstOrDefaultAsync(d => d.Id == student.GroupDep.Value);
@@ -39,23 +38,18 @@ namespace ManagingIndividualProjects.Controllers
                     }
                 }
                 var studentProjects = individualProjects.Where(p => p.Student == student.Id).ToList();
-                Console.WriteLine($"Student {student.Id} has {studentProjects.Count} projects");
                 if (studentProjects.Any())
                 {
-                    // Проверка всех проектов студента
                     foreach (var project in studentProjects)
                     {
-                        Console.WriteLine($"Project {project.Id} has grade {project.Gradle}");
                         if (project.Gradle > 2)
                         {
-                            isDebtor = false; // Если есть оценка выше двойки, студент не должник
-                            break; // Достаточно одного проекта с оценкой выше двойки, чтобы студент не был должником
+                            isDebtor = false;
+                            break;
                         }
                     }
                 }
-
-                Console.WriteLine($"Student {student.Id} is debtor: {isDebtor}");
-                debtorStatus[student.Id] = isDebtor; // Сохранение статуса должника
+                debtorStatus[student.Id] = isDebtor;
             }
 
             var model = new StudentViewModel
@@ -64,9 +58,8 @@ namespace ManagingIndividualProjects.Controllers
                 Students = students,
                 Groups = groups,
                 Departments = departments,
-                DebtorStatus = debtorStatus // Передача статуса должников в модель
+                DebtorStatus = debtorStatus
             };
-
             return View(model);
 
         }

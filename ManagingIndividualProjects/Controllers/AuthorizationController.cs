@@ -1,6 +1,7 @@
 ﻿using ManagingIndividualProjects.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
 
 namespace ManagingIndividualProjects.Controllers
 {
@@ -175,13 +176,14 @@ namespace ManagingIndividualProjects.Controllers
                 {
 
                 }
+
                 if (nowEmployee.Role == 2)
                 {
                     return RedirectToAction("ClassroomPage", "ClassroomPage");
                 }
                 else if (nowEmployee.Role == 3)
                 {
-                    return RedirectToAction("TeacherPage", "TeacherPage");
+                    return RedirectToAction("TeacherPage", "TeacherPage");                   
                 }
                 else if (nowEmployee.Role == 4)
                 {
@@ -191,6 +193,7 @@ namespace ManagingIndividualProjects.Controllers
                 {
                     return RedirectToAction("DepartmentListView", "DepartmentPage");
                 }
+                
             }
            return View();
         }

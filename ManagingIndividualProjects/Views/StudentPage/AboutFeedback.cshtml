@@ -1,28 +1,19 @@
 ﻿@model FeedbackViewModel
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-<body>    
-    <div class="card card-primary">
-        <div class="card-header">
-            <h3 class="card-title">Отзыв по проекту на тему: @Model.IndividualProject.NameTheme</h3>
-        </div>
-        <div class="card-body">
-            <div class="form-group">
-                <label for="inputName">Cтатус: @Model.status</label>
-            </div>
-            <div class="form-group">
-                <label for="inputName">Оценка: @Model.gradle</label>
-            </div>
+
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">Отзыв по проекту на тему: @Model.IndividualProject.NameTheme</h3>
+    </div>
+    <div class="card-body">
+        <form asp-action="EditFeedback" method="post">
+            <input type="hidden" asp-for="idProject" />
             <div class="form-group">
                 <label for="inputDescription">Отзыв преподавателя</label>
-                <textarea id="inputDescription" class="form-control" rows="4" style="margin-top: 10px" readonly>@Model.IndividualProject.Feedback</textarea>
+                <textarea asp-for="feedback" id="inputDescription" class="form-control" rows="4" style="margin-top: 10px" readonly></textarea>
             </div>
-            <a href="" class="btn btn-sm btn-primary" style="margin-top: 10px; float: right;">
-                <i class="fas fa-user"></i> Назад
-            </a>
-        </div>
+        </form>
+        <a href="@Url.Action("goBack", "StudentPage")" class="btn btn-sm btn-primary" style="margin-top: 10px; float: right;">
+            <i class="fas fa-user"></i> Назад
+        </a>
     </div>
-</body>
+</div>

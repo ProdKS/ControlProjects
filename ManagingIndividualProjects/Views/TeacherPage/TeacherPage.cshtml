@@ -22,6 +22,15 @@
             var fioStudent = Model.Students.FirstOrDefault(x => x.Id == IndividualProject.Student);
             string statusName = "";
             bool flagReady = false;
+            string gradle = "";
+            if (IndividualProject.Gradle == null)
+            {
+                gradle = "Отсутствует";
+            }
+            else
+            {
+                gradle = IndividualProject.Gradle.ToString();
+            }
             if (IndividualProject.Status == 1)
             {
                 statusName = "Одобрено";
@@ -37,6 +46,10 @@
             else if (IndividualProject.Status == 4)
             {
                 statusName = "Оценено";
+            }
+            else if (IndividualProject.Status == 5)
+            {
+                statusName = "Изменена тема";
             }
             string feedBack = "";
             bool flag = false;
@@ -60,6 +73,7 @@
                             <p class="text-muted text-sm">Студент @fioStudent.Surname @fioStudent.Name @fioStudent.Pat</p>
                             <ul class="ml-4 mb-0 fa-ul text-muted">
                                 <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>Статус: @statusName</li>
+                                <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>Оценка: @gradle</li>
                                 <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>@feedBack</li>
                             </ul>
                         </div>
@@ -73,14 +87,26 @@
                         <a href="@Url.Action("DeclineProject", "TeacherPage", new { IndividualProjectid = IndividualProject.Id })" class="btn btn-sm btn-primary" style="background-color: red">
                             <i class="fas fa-user"></i> Отклонить
                         </a>
-                        <a href="@Url.Action("EditProjectTheme", "TeacherPage", new { IndividualProjectid = IndividualProject.Id }) class="btn btn-sm btn-primary">
+                        <a href="@Url.Action("EditProjectTheme", "TeacherPage", new { IndividualProjectid = IndividualProject.Id })" class="btn btn-sm btn-primary">
                             <i class="fas fa-user"></i> Изменить
                         </a>
-                        <a href="#" class="btn btn-sm btn-primary">
-                            <i class="fas fa-user"></i> Оценить
+                        <a href="@Url.Action("AddEditGrade", "TeacherPage", new { idProject = IndividualProject.Id })" class="btn btn-sm btn-primary">
+                            <i class="fas fa-user"></i> Изменить оценку
                         </a>
-                        <a href="#" class="btn btn-sm btn-primary">
-                            <i class="fas fa-user"></i> Оставить отзыв
+                        @if(flag == false)
+                        {
+                            <a href="@Url.Action("AddFeedback", "TeacherPage", new { idProject = IndividualProject.Id })" class="btn btn-sm btn-primary">
+                                <i class="fas fa-user"></i> Оставить отзыв
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("CheckEditFeedback", "TeacherPage", new { idProject = IndividualProject.Id })" class="btn btn-sm btn-primary">
+                                <i class="fas fa-user"></i> Просмотреть/изменить отзыв
+                            </a>
+                        }
+                        <a href="@Url.Action("DeleteProject", "TeacherPage", new { projectID = IndividualProject.Id })" class="btn btn-sm btn-primary" style="background-color: red; float: right">
+                            <i class="fas fa-user"></i> Удалить
                         </a>
                     </div>
                 </div>

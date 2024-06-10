@@ -1,0 +1,97 @@
+﻿@model IndividualProjectModel
+@{
+
+}
+<body>
+    <div class="ContainerDeprtaments">
+        @if (Model.IndividualProjects.Count == 0)
+        {
+            <div class="title-div">
+                <h1 class="title">У студента нет проектов</h1>
+            </div>
+        }
+        else
+        {
+            <div class="title-div">
+                <h1 class="title">Проекты студента</h1>
+            </div>
+            @foreach (var IndividualProject in Model.IndividualProjects)
+            {
+                var nameSubject = Model.Subjects.FirstOrDefault(d => d.Id == IndividualProject.Subject);
+                var feedBackCheck = Model.IndividualProjects.FirstOrDefault(d => d.Id == IndividualProject.Id).Feedback;
+                string statusName = "";
+                bool flagReady = false;
+                string gradle = "";
+                if (IndividualProject.Gradle == null)
+                {
+                    gradle = "Оценка не поставлена";
+                }
+                else
+                {
+                    gradle = Convert.ToString(IndividualProject.Gradle);
+                }
+                if (IndividualProject.Status == 1)
+                {
+                    statusName = "Одобрено";
+                }
+                else if (IndividualProject.Status == 2)
+                {
+                    statusName = "Отклонена";
+                }
+                else if (IndividualProject.Status == 3)
+                {
+                    statusName = "Не просмотрено";
+                }
+                else if (IndividualProject.Status == 4)
+                {
+                    statusName = "Оценено";
+                }
+                else if (IndividualProject.Status == 5)
+                {
+                    statusName = "Изменена тема";
+                }
+                string feedBack = "";
+                bool flag = false;
+                if (IndividualProject.Feedback == null)
+                {
+                    feedBack = "По проекту пока нет отзыва";
+                }
+                else
+                {
+                    flag = true;
+                    feedBack = "По проекту предоставлен отзыв";
+                }
+
+                <div class="card bg-light d-flex flex-fill" style="margin-top: 20px;">
+                    <div class="card-header text-muted border-bottom-0">
+                        Тема: @IndividualProject.NameTheme
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="row">
+                            <div class="col-7" style="width: 100%">
+                                <h2 class="lead"><b>Дисциплина: @nameSubject.Name</b></h2>
+                                <p class="text-muted text-sm">Преподаватель: @nameSubject.Teacher.Surname @nameSubject.Teacher.Name @nameSubject.Teacher.Pat</p>
+                                <ul class="ml-4 mb-0 fa-ul text-muted">
+                                    <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>Статус: @statusName</li>
+                                    <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>@feedBack</li>
+                                    <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>Оценка: @gradle</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        @if (feedBackCheck != null)
+                        {
+                            <div class="text-right">
+                                <a href="@Url.Action("AboutFeedback", "ClassroomPage", new { idProject = IndividualProject.Id })" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-user"></i> Просмотр отзыва
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+            }
+        }
+    </div>
+</body>

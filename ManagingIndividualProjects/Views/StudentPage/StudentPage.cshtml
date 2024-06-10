@@ -82,6 +82,12 @@
                             <div class="text-right">                                
                                 
                                     <div class="text-right">
+                                        @if(IndividualProject.Status == 3)
+                                        {
+                                            <a href="@Url.Action("EditTheme", "StudentPage", new { idproject = IndividualProject.Id })" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-user"></i> change theme
+                                            </a>
+                                        }
                                         @if (flag == true)
                                         {
                                             <a href="@Url.Action("AboutFeedback", "StudentPage", new { idProject = IndividualProject.Id })" class="btn btn-sm btn-primary">
@@ -115,20 +121,6 @@
                             </div>
                     </div>
                   
-            }
-            bool canAddProject = Model.IndividualProjects.Count < 3 &&
-            !Model.IndividualProjects.Any(p => p.Status == 1 || p.Status == 4);         
-            if (canAddProject)
-            {
-                <div class="card" style="margin-top: 20px;">
-                    <div class="card-body">
-                        <h5 class="card-title">Вы можете выбрать еще @(3 - Model.IndividualProjects.Count) проекта</h5>
-                        <p class="card-text">
-                            Вы можете предложить тему и выбрать дисциплину самостоятельно.
-                        </p>
-                        <a href="@Url.Action("AddProject", "StudentPage")" class="card-link">Подать заявку</a>
-                    </div>
-                </div>
             }
         }
     </div>

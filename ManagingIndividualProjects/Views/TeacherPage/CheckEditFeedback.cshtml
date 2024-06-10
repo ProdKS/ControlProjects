@@ -1,0 +1,23 @@
+﻿@model FeedbackViewModel
+
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">Отзыв по проекту на тему: @Model.IndividualProject.NameTheme</h3>
+    </div>
+    <div class="card-body">
+        <form asp-action="EditFeedback" method="post">
+            <input type="hidden" asp-for="idProject" />
+            <div class="form-group">
+                <label for="inputDescription">Отзыв преподавателя</label>
+                <textarea asp-for="feedback" id="inputDescription" class="form-control" rows="4" style="margin-top: 10px"></textarea>
+            </div>
+            <button type="submit" class="btn btn-sm btn-primary" style="margin-top: 10px;">
+                <i class="fas fa-user"></i> Изменить
+            </button>
+            <a href="@Url.Action("goBack", "TeacherPage")" class="btn btn-sm btn-primary" style="margin-top: 10px; float: right;">
+                <i class="fas fa-user"></i> Назад
+            </a>
+        </form>
+        
+    </div>
+</div>

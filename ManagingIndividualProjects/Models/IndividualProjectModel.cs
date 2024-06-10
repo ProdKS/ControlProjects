@@ -10,6 +10,8 @@ namespace ManagingIndividualProjects.Models
         public List<Subject> Subjects { get; set; }
         public string subjectID { get; set; }
         public string nameTheme { get; set; }
+        public string feedBack {  get; set; }
+        public int idproject { get; set; }
         public int SelectedOption { get; set; }
     }
 }

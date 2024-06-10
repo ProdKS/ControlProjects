@@ -11,22 +11,38 @@ namespace ManagingIndividualProjects.Controllers
         {
             this.workBD = workbd;
         }
-        public IActionResult GroupView()
+        public async Task<IActionResult> GroupViewAsync()
         {
             ViewBag.CurrentRole = Convert.ToInt32(HttpContext.Session.GetString("Role"));
-            var groups = workBD.Groups.Where(x => x.IsDepartment == 0).ToList();            
-            return View(groups);
+            var groups = workBD.Groups.Where(x => x.IsDepartment == 0).ToList();
+            var department = await workBD.Departments.ToListAsync();
+            var employees = await workBD.Employees.ToListAsync();
+            if (groups == null)
+            {
+                return RedirectToAction("GroupView");
+            }
+            var model = new GroupsViewModel();
+            model.Groups = await workBD.Groups.Where(x => x.IsDepartment == 0).ToListAsync();
+            model.employees = employees;
+            model.departments = department;
+            model.StudentCounts = new Dictionary<int, int>();
+            foreach (var group in model.Groups)
+            {
+                int studentCount = await workBD.Students.CountAsync(s => s.GroupDep == group.Id);
+                model.StudentCounts[group.Id] = studentCount;
+            }
+            return View(model);
         }
-        public async Task<IActionResult> GroupDetailView(int groupsId)
+        public async Task<IActionResult> GroupDetailView(int groupid)
         {
             ViewBag.CurrentRole = Convert.ToInt32(HttpContext.Session.GetString("Role"));
-            var group = await workBD.Groups.FindAsync(groupsId);
+            var group = await workBD.Groups.FindAsync(groupid);
             var individualProjects = await workBD.IndividualProjects.ToListAsync();
             if (group == null)
             {
                 return RedirectToAction("GroupView");
             }
-            var students = await workBD.Students.Where(x => x.GroupDep == groupsId && x.Role == 1).ToListAsync();
+            var students = await workBD.Students.Where(x => x.GroupDep == groupid && x.Role == 1).ToListAsync();
             var debtorStatus = new Dictionary<int, bool>();
             foreach (var student in students)
             {

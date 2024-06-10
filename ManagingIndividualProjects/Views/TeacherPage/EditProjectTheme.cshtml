@@ -1,23 +1,25 @@
-﻿@model IndividualProjectModel
-@{
+﻿@model EditThemeModel
 
-}
 <body>
     <div class="ContainerDeprtaments">
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title">Добавление проекта</h3>
+                <h3 class="card-title">Изменение темы проекта</h3>
             </div>
             <form asp-action="EditProjectTheme" asp-controller="TeacherPage" method="post">
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="inputThemeName">Тема индивидуального проекта</label>
-                        <input asp-for="nameTheme" value="" class="form-control" id="inputThemeName" placeholder="Напишите тему">
+                        <label for="inputThemeName">Тема индивидуального проекта: </label>
+                        <input asp-for="nameTheme" class="form-control" id="inputThemeName" placeholder="Напишите тему">
                     </div>
-                    <label for="myDropdown">Выберите опцию:</label>
+                    <div class="form-group">
+                        <label for="inputDescription">Также вы можете оставить отзыв: </label>
+                        <textarea asp-for="feedback" id="inputDescription" class="form-control" rows="4"></textarea>
+                    </div>
+                    <input type="hidden" asp-for="idProject" />
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Изменить</button>
                 </div>
             </form>
         </div>

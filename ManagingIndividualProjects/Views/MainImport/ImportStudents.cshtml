@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Import Students";
+    var groups = ViewBag.Groups as List<ManagingIndividualProjects.Models.Group>;
+}
+
+<div class="container">
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Импорт студентов</h3>
+        </div>
+        <form asp-action="ImportStudents" method="post" enctype="multipart/form-data">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="myDropdown">Выберите группу:</label>
+                    <select id="myDropdown" name="selectedGroupId" class="form-control">
+                        @foreach (var group in groups)
+                        {
+                            <option value="@group.Id">@group.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Выберите файл</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" name="file" class="custom-file-input" id="exampleInputFile">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Импорт</button>
+            </div>
+        </form>
+    </div>
+</div>

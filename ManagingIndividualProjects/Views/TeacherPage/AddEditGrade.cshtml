@@ -1,0 +1,30 @@
+﻿@model EditGradeViewModel
+
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title">Оценка для проекта: @Model.nameTheme</h3>
+    </div>
+    <div class="card-body">
+        <form asp-action="AddEditGrade" method="post" class="needs-validation" novalidate>
+            <input type="hidden" asp-for="idProject" />
+            <div class="form-group">
+                <label for="selectGrade">Выберите оценку:</label>
+                <select class="form-control" asp-for="Grade">
+                    <option value="">Выберите оценку</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="inputFeedback">Отзыв:</label>
+                <textarea class="form-control" id="inputFeedback" rows="3" asp-for="feedback"></textarea>
+            </div>
+            <button style="margin-top: 10px" type="submit" class="btn btn-primary">Сохранить</button>
+            <a href="@Url.Action("goBack", "TeacherPage")" class="btn btn-sm btn-primary" style="margin-top: 10px; float: right;">
+                <i class="fas fa-user"></i> Назад
+            </a>
+        </form>
+    </div>
+</div>

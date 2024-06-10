@@ -9,27 +9,11 @@
     <div style="flex-wrap: wrap; display: flex">
         @foreach (var users in Model.Students)
         {
-            string descStatusProject = "";
             var haveProject = Model.IndividualProjects.FirstOrDefault(d => d.Student == users.Id);
-            string debtor = "";
-            @if (Model.DebtorStatus.ContainsKey(users.Id) && Model.DebtorStatus[users.Id])
-            {
-                debtor = "Должник";
-            }
-            else
-            {
-                debtor = "Не должник";
-            }
-            if (haveProject == null)
-            {
-                descStatusProject = "Тема не выбрана";
-            }
-            else
-            {
-                descStatusProject = "Тема выбрана";
-            }
+            string descStatusProject = haveProject != null ? haveProject.NameTheme : "не выбрана";
+            string debtor = Model.DebtorStatus.ContainsKey(users.Id) && Model.DebtorStatus[users.Id] ? "Не зачтено" : "Зачтено";
             <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column" style="margin-top: 10px; margin-right: 10px; width: 30%">
-                <div class="card bg-light d-flex flex-fill">                    
+                <div class="card bg-light d-flex flex-fill">
                     <div class="card-header text-muted border-bottom-0">@users.Surname @users.Name @users.Pat</div>
                     <div class="card-body pt-0">
                         <div class="row">
@@ -42,10 +26,24 @@
                                 else
                                 {
                                     <p class="text-muted text-sm"><b>Статус: <b style="color: green">@debtor</b></b></p>
-                                }                                
+                                }
                                 <ul class="ml-4 mb-0 fa-ul text-muted">
-                                    <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>@descStatusProject</li>
-                                    <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Phone #: + 800 - 12 12 23 52</li>
+                                    <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>Тема: @descStatusProject</li>
+                                    @if (haveProject != null)
+                                    {
+                                        if (haveProject.Gradle != null)
+                                        {
+                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>Оценка: @haveProject.Gradle</li>
+                                        }
+                                        else
+                                        {
+                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>Оценка: отсутствует</li>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span>Оценка: отсутствует</li>
+                                    }
                                 </ul>
                             </div>
                         </div>

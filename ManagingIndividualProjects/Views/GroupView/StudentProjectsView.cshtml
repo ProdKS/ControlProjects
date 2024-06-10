@@ -17,9 +17,8 @@
             </div>
             @foreach (var IndividualProject in Model.IndividualProjects)
             {
-
-                var feedBackCheck = Model.IndividualProjects.FirstOrDefault(d => d.Id == IndividualProject.Id).Feedback;
                 var nameSubject = Model.Subjects.FirstOrDefault(d => d.Id == IndividualProject.Subject);
+                var feedBackCheck = Model.IndividualProjects.FirstOrDefault(d => d.Id == IndividualProject.Id).Feedback;
                 string statusName = "";
                 bool flagReady = false;
                 string gradle = "";
@@ -55,13 +54,14 @@
                 bool flag = false;
                 if (IndividualProject.Feedback == null)
                 {
-                    feedBack = "По вашему проекту пока нет отзыва";
+                    feedBack = "По проекту пока нет отзыва";
                 }
                 else
                 {
                     flag = true;
-                    feedBack = "По вашему проекту предоставлен отзыв";
+                    feedBack = "По проекту предоставлен отзыв";
                 }
+
                 <div class="card bg-light d-flex flex-fill" style="margin-top: 20px;">
                     <div class="card-header text-muted border-bottom-0">
                         Тема: @IndividualProject.NameTheme
@@ -83,7 +83,7 @@
                         @if (feedBackCheck != null)
                         {
                             <div class="text-right">
-                                <a href="@Url.Action("AboutFeedback", "StudentPage", new { idProject = IndividualProject.Id })" class="btn btn-sm btn-primary">
+                                <a href="@Url.Action("AboutFeedback", "DepartmentPage", new { idProject = IndividualProject.Id })" class="btn btn-sm btn-primary">
                                     <i class="fas fa-user"></i> Просмотр отзыва
                                 </a>
                             </div>

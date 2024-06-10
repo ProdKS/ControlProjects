@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Import Teachers";
+}
+
+<div class="container">
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Импорт преподавателей</h3>
+        </div>
+        <form asp-action="ImportTeachers" method="post" enctype="multipart/form-data">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="exampleInputFile">Выберите файл</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" name="file" class="custom-file-input" id="exampleInputFile">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Импорт</button>
+            </div>
+        </form>
+    </div>
+</div>

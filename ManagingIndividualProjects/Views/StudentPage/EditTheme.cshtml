@@ -1,0 +1,24 @@
+﻿@model IndividualProjectModel
+
+<div class="ContainerDeprtaments">
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Добавление проекта</h3>
+        </div>
+        <form asp-action="EditTheme" asp-controller="StudentPage" method="post">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="inputThemeName">Тема вашего индивидуального проекта</label>
+                    <input asp-for="nameTheme" class="form-control" id="inputThemeName" placeholder="Напишите тему">
+                </div>
+                <input type="hidden" asp-for="idproject" />
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Создать</button>
+                <a href="@Url.Action("goBack", "StudentPage")" class="btn btn-sm btn-primary" style="margin-top: 10px; float: right;">
+                    <i class="fas fa-user"></i> Назад
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
