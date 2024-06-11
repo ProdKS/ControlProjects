@@ -3,16 +3,52 @@
   "WorkspaceRootPath": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\views\\mainimport\\importgroupsemployee.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\views\\mainimport\\importgroupsemployee.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\models\\projectscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\models\\projectscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\models\\subject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\models\\subject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\views\\mainimport\\mainimport.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\views\\mainimport\\mainimport.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\controllers\\mainimportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\controllers\\mainimportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\views\\mainimport\\importgroups.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\views\\mainimport\\importgroups.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\views\\mainimport\\deletegroupteacher.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\views\\mainimport\\deletegroupteacher.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\models\\groupteacherviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\models\\groupteacherviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\views\\mainimport\\deletegroup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\views\\mainimport\\deletegroup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\models\\groupviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\models\\groupviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\views\\mainimport\\deletesubject.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\views\\mainimport\\deletesubject.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\views\\mainimport\\addgroup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\views\\mainimport\\addgroup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\views\\mainimport\\deletestudent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\views\\mainimport\\deletestudent.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|c:\\users\\kisli\\source\\repos\\managingindividualprojects\\managingindividualprojects\\controllers\\studentpagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AF3CD26-50A6-43A4-A6E9-30D10EC25EE5}|ManagingIndividualProjects\\ManagingIndividualProjects.csproj|solutionrelative:managingindividualprojects\\controllers\\studentpagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,40 +63,157 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ImportGroupsEmployee.cshtml",
-              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\MainImport\\ImportGroupsEmployee.cshtml",
-              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Views\\MainImport\\ImportGroupsEmployee.cshtml",
-              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\MainImport\\ImportGroupsEmployee.cshtml",
-              "RelativeToolTip": "ManagingIndividualProjects\\Views\\MainImport\\ImportGroupsEmployee.cshtml",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAAwBcAAAAPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-10T02:14:18.177Z",
+              "Title": "ProjectsContext.cs",
+              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Models\\ProjectsContext.cs",
+              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Models\\ProjectsContext.cs",
+              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Models\\ProjectsContext.cs",
+              "RelativeToolTip": "ManagingIndividualProjects\\Models\\ProjectsContext.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAYwCwAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-11T09:16:40.478Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Subject.cs",
+              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Models\\Subject.cs",
+              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Models\\Subject.cs",
+              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Models\\Subject.cs",
+              "RelativeToolTip": "ManagingIndividualProjects\\Models\\Subject.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-11T09:14:46.744Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DeleteGroupTeacher.cshtml",
+              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\MainImport\\DeleteGroupTeacher.cshtml",
+              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Views\\MainImport\\DeleteGroupTeacher.cshtml",
+              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\MainImport\\DeleteGroupTeacher.cshtml",
+              "RelativeToolTip": "ManagingIndividualProjects\\Views\\MainImport\\DeleteGroupTeacher.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-11T09:07:24.071Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GroupTeacherViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Models\\GroupTeacherViewModel.cs",
+              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Models\\GroupTeacherViewModel.cs",
+              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Models\\GroupTeacherViewModel.cs",
+              "RelativeToolTip": "ManagingIndividualProjects\\Models\\GroupTeacherViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAABFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-11T09:06:08.355Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DeleteGroup.cshtml",
+              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\MainImport\\DeleteGroup.cshtml",
+              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Views\\MainImport\\DeleteGroup.cshtml",
+              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\MainImport\\DeleteGroup.cshtml",
+              "RelativeToolTip": "ManagingIndividualProjects\\Views\\MainImport\\DeleteGroup.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-11T08:56:22.748Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GroupViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Models\\GroupViewModel.cs",
+              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Models\\GroupViewModel.cs",
+              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Models\\GroupViewModel.cs",
+              "RelativeToolTip": "ManagingIndividualProjects\\Models\\GroupViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAA+AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-11T08:55:38.837Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainImport.cshtml",
+              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\MainImport\\MainImport.cshtml",
+              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Views\\MainImport\\MainImport.cshtml",
+              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\MainImport\\MainImport.cshtml",
+              "RelativeToolTip": "ManagingIndividualProjects\\Views\\MainImport\\MainImport.cshtml",
+              "ViewState": "AQIAAE8AAAAAAAAAAAAiwGMAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-11T08:52:40.902Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "StudentPageController.cs",
+              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Controllers\\StudentPageController.cs",
+              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Controllers\\StudentPageController.cs",
+              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Controllers\\StudentPageController.cs",
+              "RelativeToolTip": "ManagingIndividualProjects\\Controllers\\StudentPageController.cs",
+              "ViewState": "AQIAADgAAAAAAAAAAAAwwEgAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-11T08:30:04.228Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DeleteSubject.cshtml",
+              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\MainImport\\DeleteSubject.cshtml",
+              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Views\\MainImport\\DeleteSubject.cshtml",
+              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\MainImport\\DeleteSubject.cshtml",
+              "RelativeToolTip": "ManagingIndividualProjects\\Views\\MainImport\\DeleteSubject.cshtml",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAuwBIAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-11T08:29:33.939Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AddGroup.cshtml",
+              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\MainImport\\AddGroup.cshtml",
+              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Views\\MainImport\\AddGroup.cshtml",
+              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\MainImport\\AddGroup.cshtml",
+              "RelativeToolTip": "ManagingIndividualProjects\\Views\\MainImport\\AddGroup.cshtml",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAowB0AAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-10T02:20:21.116Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "MainImportController.cs",
               "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Controllers\\MainImportController.cs",
               "RelativeDocumentMoniker": "ManagingIndividualProjects\\Controllers\\MainImportController.cs",
               "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Controllers\\MainImportController.cs",
               "RelativeToolTip": "ManagingIndividualProjects\\Controllers\\MainImportController.cs",
-              "ViewState": "AQIAAIcBAAAAAAAAAAAvwJIBAAAJAAAA",
+              "ViewState": "AQIAAHsDAAAAAAAAAAAgwM4DAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-10T02:04:14.785Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ImportGroups.cshtml",
-              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\MainImport\\ImportGroups.cshtml",
-              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Views\\MainImport\\ImportGroups.cshtml",
-              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\MainImport\\ImportGroups.cshtml",
-              "RelativeToolTip": "ManagingIndividualProjects\\Views\\MainImport\\ImportGroups.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 10,
+              "Title": "DeleteStudent.cshtml",
+              "DocumentMoniker": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\MainImport\\DeleteStudent.cshtml",
+              "RelativeDocumentMoniker": "ManagingIndividualProjects\\Views\\MainImport\\DeleteStudent.cshtml",
+              "ToolTip": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\Views\\MainImport\\DeleteStudent.cshtml",
+              "RelativeToolTip": "ManagingIndividualProjects\\Views\\MainImport\\DeleteStudent.cshtml",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAiwAwAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-10T02:04:06.087Z",
+              "WhenOpened": "2024-06-11T05:21:19.771Z",
               "EditorCaption": ""
             }
           ]

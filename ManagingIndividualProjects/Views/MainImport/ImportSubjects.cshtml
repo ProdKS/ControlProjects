@@ -14,13 +14,18 @@
                     <div class="input-group">
                         <div class="custom-file">
                             <input type="file" name="file" class="custom-file-input" id="exampleInputFile">
-                            <label class="custom-file-label" for="exampleInputFile">Выберите файл</label>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Импорт</button>
+                <button type="submit" class="btn btn-sm btn-primary" style="margin-top:5px">Импорт</button>
+                <a href="@Url.Action("ImportGroups", "MainImport")" class="btn btn-sm btn-primary" style="margin-top:5px">
+                    <i class="fas fa-user"></i> Добавить группы
+                </a>
+                <a href="@Url.Action("goToTeachers", "MainImport")" class="btn btn-sm btn-primary" style="margin-top: 5px; float: right;">
+                    <i class="fas fa-user"></i> Назад
+                </a>
             </div>
         </form>
     </div>

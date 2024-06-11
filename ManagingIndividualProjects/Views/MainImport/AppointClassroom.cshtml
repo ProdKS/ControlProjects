@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Назначение классного руководителя";
+    var groups = ViewBag.Groups as List<ManagingIndividualProjects.Models.Group>;
+    var teachers = ViewBag.Teachers as List<ManagingIndividualProjects.Models.Employee>;
+}
+
+<div class="container">
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Назначение классного руководителя</h3>
+        </div>
+        <form asp-action="AppointClassroom" method="post">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="myDropdown">Выберите группу:</label>
+                    <select id="myDropdown" name="selectedGroupId" class="form-control">
+                        @foreach (var group in groups)
+                        {
+                            <option value="@group.Id">@group.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="myDropdown1">Выберите преподавателя:</label>
+                    <select id="myDropdown1" name="selectedClassroomId" class="form-control">
+                        @foreach (var teacher in teachers)
+                        {
+                            <option value="@teacher.Id">@teacher.Surname @teacher.Name @teacher.Pat</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-sm btn-primary" style="margin-top:5px">Назначить</button>
+                <a href="@Url.Action("goToMain", "MainImport")" class="btn btn-sm btn-primary" style="margin-top: 5px;margin-right:5px; float: right;">
+                    <i class="fas fa-user"></i> На главную
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+

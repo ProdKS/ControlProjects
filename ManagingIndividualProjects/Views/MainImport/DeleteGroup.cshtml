@@ -1,0 +1,32 @@
+﻿@model GroupViewModel
+
+@{
+    ViewData["Title"] = "Удаление группы";
+}
+
+<div class="container">
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Удаление группы</h3>
+        </div>
+        <form asp-action="DeleteGroup" method="post">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="myDropdown">Выберите группу:</label>
+                    <select id="myDropdown" name="groupId" class="form-control">
+                        @foreach (var groupOption in Model.GroupOptions)
+                        {
+                            <option value="@groupOption.Value">@groupOption.Text</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-sm btn-danger" style="margin-top: 5px;">Удалить</button>
+                <a href="@Url.Action("goToMain", "MainImport")" class="btn btn-sm btn-primary" style="margin-top: 5px; float: right;">
+                    <i class="fas fa-user"></i> На главную
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

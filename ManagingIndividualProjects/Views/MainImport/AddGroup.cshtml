@@ -1,0 +1,51 @@
+﻿@model ManagingIndividualProjects.Models.Group
+
+@{
+    ViewData["Title"] = "Добавление группы";
+    var departments = ViewBag.Departments as List<ManagingIndividualProjects.Models.Department>;
+    var teachers = ViewBag.Teachers as List<ManagingIndividualProjects.Models.Employee>;
+}
+
+<div class="container">
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Добавление группы</h3>
+        </div>
+        <form asp-action="AddGroup" method="post">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="myDropdown">Выберите отделение:</label>
+                    <select id="myDropdown" name="DepartmentId" class="form-control">
+                        <option value="">Выберите отделение</option>
+                        @foreach (var department in departments)
+                        {
+                            <option value="@department.Id">@department.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="myDropdown1">Выберите классного руководителя:</label>
+                    <select id="myDropdown1" name="ClassroomTeacher" class="form-control">
+                        <option value="">Выберите классного руководителя</option>
+                        @foreach (var teacher in teachers)
+                        {
+                            <option value="@teacher.Id">@teacher.Surname @teacher.Name @teacher.Pat</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label">Название группы</label>
+                    <input asp-for="Name" class="form-control" placeholder="Напишите название" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-sm btn-primary" style="margin-top:5px">Добавить</button>
+                <a href="@Url.Action("goToMain", "MainImport")" class="btn btn-sm btn-primary" style="margin-top: 5px;margin-right:5px; float: right;">
+                    <i class="fas fa-user"></i> На главную
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+

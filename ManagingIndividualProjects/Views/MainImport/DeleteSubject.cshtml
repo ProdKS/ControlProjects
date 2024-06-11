@@ -1,0 +1,32 @@
+﻿@model SubjectViewModel
+
+@{
+    ViewData["Title"] = "Удаление дисциплины";
+}
+
+<div class="container">
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Удаление дисциплины</h3>
+        </div>
+        <form asp-action="DeleteSubject" method="post">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="myDropdown">Выберите дисциплину:</label>
+                    <select id="myDropdown" name="subjectId" class="form-control">
+                        @foreach (var subjectOption in Model.SubjectOptions)
+                        {
+                            <option value="@subjectOption.Value">@subjectOption.Text</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-sm btn-danger" style="margin-top: 5px;">Удалить</button>
+                <a href="@Url.Action("goToMain", "MainImport")" class="btn btn-sm btn-primary" style="margin-top: 5px;margin-right:5px; float: right;">
+                    <i class="fas fa-user"></i> Назад
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

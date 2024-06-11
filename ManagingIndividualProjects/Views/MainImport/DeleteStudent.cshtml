@@ -1,0 +1,33 @@
+﻿@model DeleteStudentViewModel
+
+@{
+    ViewData["Title"] = "Delete Student";
+}
+
+<div class="container">
+    <div class="card card-danger">
+        <div class="card-header">
+            <h3 class="card-title">Удаление студента</h3>
+        </div>
+        <form asp-action="DeleteStudent" method="post">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="studentDropdown">Выберите студента:</label>
+                    <select id="studentDropdown" name="StudentId" class="form-control">
+                        <option value="">Выберите...</option>
+                        @foreach (var student in Model.StudentOptions)
+                        {
+                            <option value="@student.Value">@student.Text</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-sm btn-danger" style="margin-top: 5px;">Удалить</button>
+                <a href="@Url.Action("goToMain", "MainImport")" class="btn btn-sm btn-primary" style="margin-top: 5px; float: right;">
+                    <i class="fas fa-user"></i> Назад
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

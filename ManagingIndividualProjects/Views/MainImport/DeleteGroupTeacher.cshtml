@@ -1,0 +1,32 @@
+﻿@model GroupTeacherViewModel
+
+@{
+    ViewData["Title"] = "Удаление связи группы и преподавателя";
+}
+
+<div class="container">
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Удаление связи группы и преподавателя</h3>
+        </div>
+        <form asp-action="DeleteGroupTeacher" method="post">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="groupTeacherDropdown">Выберите группу и преподавателя:</label>
+                    <select id="groupTeacherDropdown" name="selectedGroupTeacher" class="form-control">
+                        @foreach (var option in Model.GroupTeacherOptions)
+                        {
+                            <option value="@option.Value">@option.Text</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-sm btn-danger" style="margin-top: 5px;">Удалить</button>
+                <a href="@Url.Action("goToMain", "MainImport")" class="btn btn-sm btn-primary" style="margin-top: 5px;margin-right:5px; float: right;">
+                    <i class="fas fa-user"></i> На главную
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

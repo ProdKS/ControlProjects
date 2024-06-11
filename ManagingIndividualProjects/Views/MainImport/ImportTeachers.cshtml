@@ -19,7 +19,16 @@
                 </div>
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Импорт</button>
+                <button type="submit" class="btn btn-sm btn-primary" style="margin-top:5px">Импорт</button>
+                <a href="@Url.Action("ImportClassrooms", "MainImport")" class="btn btn-sm btn-primary" style="margin-top:5px">
+                    <i class="fas fa-user"></i> Добавить классных руководителей
+                </a>
+                <a href="@Url.Action("ImportSubjects", "MainImport")" class="btn btn-sm btn-primary" style="margin-top:5px">
+                    <i class="fas fa-user"></i> Добавить дисциплины
+                </a>
+                <a href="@Url.Action("goToMain", "MainImport")" class="btn btn-sm btn-primary" style="margin-top: 5px; float: right;">
+                    <i class="fas fa-user"></i> Назад
+                </a>
             </div>
         </form>
     </div>

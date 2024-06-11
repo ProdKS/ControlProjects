@@ -1,0 +1,43 @@
+﻿@model ManagingIndividualProjects.Models.EmployeeGroupModel
+
+@{
+    ViewData["Title"] = "Добавление в EmployeeGroup";
+}
+
+<div class="container">
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Добавление связи между учителями и группами</h3>
+        </div>
+        <form asp-action="AddEmployeeGroup" method="post">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="groupDropdown">Выберите группу:</label>
+                    <select id="groupDropdown" name="GroupId" class="form-control">
+                        <option value="">Выберите...</option>
+                        @foreach (var group in Model.GroupOptions)
+                        {
+                            <option value="@group.Value">@group.Text</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="teacherDropdown">Выберите преподавателя:</label>
+                    <select id="teacherDropdown" name="TeacherId" class="form-control">
+                        <option value="">Выберите...</option>
+                        @foreach (var teacher in Model.TeacherOptions)
+                        {
+                            <option value="@teacher.Value">@teacher.Text</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-sm btn-primary" style="margin-top:5px">Добавить</button>
+                <a href="@Url.Action("goToMain", "MainImport")" class="btn btn-sm btn-primary" style="margin-top: 5px; margin-right:5px; float: right;">
+                    <i class="fas fa-user"></i> На главную
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

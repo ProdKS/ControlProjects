@@ -5,7 +5,7 @@
 <div class="container">
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Import Employee Groups</h3>
+            <h3 class="card-title">Импорт связей групп с преподавателями</h3>
         </div>
         <form asp-action="ImportEmployeeGroups" method="post" enctype="multipart/form-data">
             <div class="card-body">
@@ -19,7 +19,13 @@
                 </div>
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Импорт</button>
+                <button type="submit" class="btn btn-sm btn-primary" style="margin-top:5px">Импорт</button>
+                <a href="@Url.Action("ImportStudents", "MainImport")" class="btn btn-sm btn-primary" style="margin-top:5px">
+                    <i class="fas fa-user"></i> Добавить студентов
+                </a>
+                <a href="@Url.Action("goToGroups", "MainImport")" class="btn btn-sm btn-primary" style="margin-top: 5px; float: right;">
+                    <i class="fas fa-user"></i> Назад
+                </a>
             </div>
         </form>
     </div>

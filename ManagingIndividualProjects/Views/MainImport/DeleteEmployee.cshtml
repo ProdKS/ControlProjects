@@ -1,0 +1,33 @@
+﻿@model DeleteEmployeeViewModel
+
+@{
+    ViewData["Title"] = "Delete Employee";
+}
+
+<div class="container">
+    <div class="card card-danger">
+        <div class="card-header">
+            <h3 class="card-title">Удаление сотрудника</h3>
+        </div>
+        <form asp-action="DeleteEmployee" method="post">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="employeeDropdown">Выберите сотрудника:</label>
+                    <select id="employeeDropdown" name="EmployeeId" class="form-control">
+                        <option value="">Выберите...</option>
+                        @foreach (var employee in Model.EmployeeOptions)
+                        {
+                            <option value="@employee.Value">@employee.Text</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-sm btn-danger" style="margin-top: 5px;">Удалить</button>
+                <a href="@Url.Action("goToMain", "MainImport")" class="btn btn-sm btn-primary" style="margin-top: 5px; float: right;">
+                    <i class="fas fa-user"></i> Назад
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

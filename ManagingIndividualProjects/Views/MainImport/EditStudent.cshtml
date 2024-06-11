@@ -1,0 +1,63 @@
+﻿@* @model EditStudentViewModel
+@{
+    ViewData["Title"] = "Edit Student";
+}
+
+<div class="container">
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Редактирование студента</h3>
+        </div>
+        <form asp-action="EditStudent" method="post">
+            <div class="form-group">
+                <label for="studentDropdown">Выберите студента:</label>
+                <select id="studentDropdown" name="StudentId" class="form-control" onchange="this.form.submit()">
+                    <option value="">Выберите...</option>
+                    @foreach (var student in Model.StudentOptions)
+                    {
+                        <option value="@student.Value" @(student.Value == Model.StudentId.ToString() ? "selected" : "")>@student.Text</option>
+                    }
+                </select>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label asp-for="Surname" class="control-label">Фамилия</label>
+                    <input asp-for="Surname" class="form-control" placeholder="Напишите фамилию" />
+                    <span asp-validation-for="Surname" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label">Имя</label>
+                    <input asp-for="Name" class="form-control" placeholder="Напишите имя" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Pat" class="control-label">Отчество</label>
+                    <input asp-for="Pat" class="form-control" placeholder="Напишите отчество" />
+                    <span asp-validation-for="Pat" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Login" class="control-label">Логин</label>
+                    <input asp-for="Login" class="form-control" placeholder="Напишите логин" />
+                    <span asp-validation-for="Login" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label">Пароль</label>
+                    <input asp-for="Password" class="form-control" placeholder="Напишите пароль" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Number" class="control-label">Телефон</label>
+                    <input asp-for="Number" class="form-control" placeholder="Напишите телефон" />
+                    <span asp-validation-for="Number" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-sm btn-primary" style="margin-top: 5px;">Сохранить</button>
+                <a href="@Url.Action("goToMain", "MainImport")" class="btn btn-sm btn-primary" style="margin-top: 5px; float: right;">
+                    <i class="fas fa-user"></i> Назад
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+ *@
