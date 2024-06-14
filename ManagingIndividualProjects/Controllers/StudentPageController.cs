@@ -20,6 +20,7 @@ namespace ManagingIndividualProjects.Controllers
             ViewBag.CurrentRole = Convert.ToInt32(HttpContext.Session.GetString("Role"));
             int idStudent = Convert.ToInt32(HttpContext.Session.GetString("Id"));           
             var individualProject = await workBD.IndividualProjects.Where(x => x.Student == idStudent).ToListAsync();
+            var files = workBD.FilesStudents.ToList();
             var listSubjects = workBD.Subjects.ToList();
             var listEmployees = workBD.Employees.ToList();
             if (individualProject == null)
@@ -32,7 +33,8 @@ namespace ManagingIndividualProjects.Controllers
                 var model = new IndividualProjectModel
                 {
                     Subjects = listSubjects,
-                    IndividualProjects = individualProject
+                    IndividualProjects = individualProject,
+                    Files = files,
                 };
                 return View(model);
             }            
@@ -50,21 +52,24 @@ namespace ManagingIndividualProjects.Controllers
                                 {
                                     SubjectID = s.Id,
                                     SubjectName = s.Name,
-                                    TeacherFullName = t.Surname + " " + t.Name + " " + t.Pat
-                                }).ToList();            
+                                    TeacherFullName = t.Surname + " " + t.Name + " " + t.Pat,
+                                    ProjectCount = (from ip in workBD.IndividualProjects
+                                                    where ip.Subject == s.Id && ip.Status != 2
+                                                    select ip).Count()
+                                }).ToList();
             var model = new IndividualProjectModel
             {
-                
-                SubjectOptions = new List<SelectListItem>
-            {
-                new SelectListItem { Value = "", Text = "Выберите..." }
-            }
+                SubjectOptions = new List<SelectListItem>()
             };
+
             foreach (var info in subjectInfos)
             {
                 string result = $"{info.SubjectName} ({info.TeacherFullName})";
-                model.SubjectOptions.Add(new SelectListItem { Value = info.SubjectID.ToString(), Text = result });
+                string optionClass = info.ProjectCount > 4 ? "red" : "green";
+                model.SubjectOptions.Add(new SelectListItem { Value = info.SubjectID.ToString(), Text = result, });
+                ViewData[info.SubjectID.ToString()] = optionClass;
             }
+
             return View(model);
         }
 
@@ -152,8 +157,14 @@ namespace ManagingIndividualProjects.Controllers
         public async Task<IActionResult> DeleteProject(int projectID)
         {
             var projectToRemove = await workBD.IndividualProjects.FindAsync(projectID);
+            var projectsToDelete = workBD.IndividualProjects.Where(p => p.Id == projectID);       
             if (projectToRemove != null)
             {
+                var projectIds = projectsToDelete.Select(p => p.Id).ToList();
+                var filesToDelete = workBD.FilesStudents
+                    .Where(f => f.IndividualProjectId.HasValue && projectIds.Contains(f.IndividualProjectId.Value))
+                    .ToList();
+                workBD.FilesStudents.RemoveRange(filesToDelete);
                 workBD.IndividualProjects.Remove(projectToRemove);
                 await workBD.SaveChangesAsync();
             }
@@ -205,6 +216,77 @@ namespace ManagingIndividualProjects.Controllers
                 projectToUpdate.NameTheme = model.nameTheme;
                 await workBD.SaveChangesAsync();
             }
+            return RedirectToAction("StudentPage");
+        }
+        public IActionResult AddFile(int idproject)
+        {
+            ViewBag.ProjectId = idproject;
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddFile(IFormFile file, int projectId)
+        {
+            if (file == null || file.Length == 0)
+                return RedirectToAction("AddFile"); ;
+            var filesStudent = new FilesStudent
+            {
+                FileName = file.FileName,
+                IndividualProjectId = projectId
+            };
+            using (var memoryStream = new MemoryStream())
+            {
+                await file.CopyToAsync(memoryStream);
+                filesStudent.FileData = memoryStream.ToArray();
+            }
+
+            workBD.FilesStudents.Add(filesStudent);
+            await workBD.SaveChangesAsync();
+            return RedirectToAction("StudentPage");
+        }
+        public async Task<IActionResult> EditDeleteFile(int projectId)
+        {
+            var files = await workBD.FilesStudents
+                .Where(f => f.IndividualProjectId == projectId)
+                .ToListAsync();
+            return View(files);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditDeleteFile(int fileId, IFormFile file)
+        {
+            var existingFile = await workBD.FilesStudents.FindAsync(fileId);
+            if (existingFile == null)
+                RedirectToAction("EditDeleteFile");
+
+            if (file != null && file.Length > 0)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    await file.CopyToAsync(memoryStream);
+                    existingFile.FileName = file.FileName;
+                    existingFile.FileData = memoryStream.ToArray();
+                }
+            }
+
+            await workBD.SaveChangesAsync();
+            return RedirectToAction("StudentPage");
+        }
+
+        public async Task<IActionResult> DownloadFile(int fileId)
+        {
+            var file = await workBD.FilesStudents.FindAsync(fileId);
+            if (file == null)
+                RedirectToAction("EditDeleteFile");
+            return File(file.FileData, "application/zip", file.FileName);
+        }
+
+        public async Task<IActionResult> DeleteFile(int fileId)
+        {
+            var file = await workBD.FilesStudents.FindAsync(fileId);
+            if (file == null)
+                return RedirectToAction("StudentPage");
+            workBD.FilesStudents.Remove(file);
+            await workBD.SaveChangesAsync();
             return RedirectToAction("StudentPage");
         }
     }

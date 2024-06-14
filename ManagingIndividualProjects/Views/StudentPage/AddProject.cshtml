@@ -18,7 +18,7 @@
                     <select id="myDropdown" name="SelectedOption" asp-for="subjectID" class="form-control">
                         @foreach (var option in Model.SubjectOptions)
                         {
-                            <option value="@option.Value">@option.Text</option>
+                            <option value="@option.Value" style="color: @(ViewData[option.Value])">@option.Text</option>
                         }
                     </select>
                 </div>

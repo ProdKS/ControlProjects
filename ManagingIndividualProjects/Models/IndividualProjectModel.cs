@@ -5,6 +5,7 @@ namespace ManagingIndividualProjects.Models
 {
     public class IndividualProjectModel
     {
+        public List<FilesStudent> Files {  get; set; }  
         public List<IndividualProject> IndividualProjects { get; set; }
         public List<SelectListItem> SubjectOptions { get; set; }
         public List<Subject> Subjects { get; set; }

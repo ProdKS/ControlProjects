@@ -6,6 +6,7 @@ using System.Globalization;
 using Microsoft.EntityFrameworkCore;
 using System.Text;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Linq;
 
 namespace ManagingIndividualProjects.Controllers
 {
@@ -211,7 +212,7 @@ namespace ManagingIndividualProjects.Controllers
                                 Login = login,
                                 Password = password,
                                 Number = phone,
-                                Role = 2
+                                Role = 3
                             });
                         }
                         catch (Exception ex)
@@ -268,7 +269,7 @@ namespace ManagingIndividualProjects.Controllers
                                 Login = login,
                                 Password = password,
                                 Number = phone,
-                                Role = 3
+                                Role = 2
                             });
                         }
                         catch (Exception ex)
@@ -344,12 +345,12 @@ namespace ManagingIndividualProjects.Controllers
             return RedirectToAction("ImportGroups");
         }
         [HttpPost]
-        public async Task<IActionResult> ImportEmployeeGroups(IFormFile file)
+        public async Task<IActionResult> ImportGroupsEmployee(IFormFile file)
         {
             if (file == null || file.Length == 0)
             {
                 ModelState.AddModelError("File", "Please upload a valid file.");
-                return RedirectToAction("ImportEmployeeGroups");
+                return RedirectToAction("ImportGroupsEmployee");
             }
 
             using (var reader = new StreamReader(file.OpenReadStream()))
@@ -380,7 +381,7 @@ namespace ManagingIndividualProjects.Controllers
                             if (group == null || teacher == null)
                             {
                                 ModelState.AddModelError("File", $"Group or Teacher not found: {groupName}, {teacherSurname} {teacherName} {teacherPat}");
-                                return RedirectToAction("ImportEmployeeGroups");
+                                return RedirectToAction("ImportGroupsEmployee");
                             }
 
                             employeeGroups.Add(new EmployeeGroup
@@ -392,7 +393,7 @@ namespace ManagingIndividualProjects.Controllers
                         catch (Exception ex)
                         {
                             ModelState.AddModelError("File", $"Error processing line: {csv.Context}. Error: {ex.Message}");
-                            return RedirectToAction("ImportEmployeeGroups");
+                            return RedirectToAction("ImportGroupsEmployee");
                         }
                     }
 
@@ -400,7 +401,7 @@ namespace ManagingIndividualProjects.Controllers
                     await workBD.SaveChangesAsync();
                 }
             }
-            return RedirectToAction("ImportEmployeeGroups");
+            return RedirectToAction("ImportGroupsEmployee");
         }
         public async Task<IActionResult> goToMain()
         {
@@ -427,6 +428,11 @@ namespace ManagingIndividualProjects.Controllers
             ViewBag.CurrentRole = Convert.ToInt32(HttpContext.Session.GetString("Role"));
             return RedirectToAction("ImportGroupsEmployee");
         }
+        public async Task<IActionResult> goToStudents()
+        {
+            ViewBag.CurrentRole = Convert.ToInt32(HttpContext.Session.GetString("Role"));
+            return RedirectToAction("ImportStudents");
+        }       
         public IActionResult AddTeacher()
         {
             return View();
@@ -774,7 +780,6 @@ namespace ManagingIndividualProjects.Controllers
 
             return View(model);
         }
-
         [HttpPost]
         public IActionResult EditStudent(EditStudentViewModel model)
         {
@@ -818,7 +823,6 @@ namespace ManagingIndividualProjects.Controllers
 
             return View(model);
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteStudent(int studentId)
@@ -830,12 +834,16 @@ namespace ManagingIndividualProjects.Controllers
                 return RedirectToAction("DeleteStudent");
             }
             var projectsToDelete = workBD.IndividualProjects.Where(p => p.Student == studentId);
+            var projectIds = projectsToDelete.Select(p => p.Id).ToList();
+            var filesToDelete = workBD.FilesStudents
+                .Where(f => f.IndividualProjectId.HasValue && projectIds.Contains(f.IndividualProjectId.Value))
+                .ToList();
+            workBD.FilesStudents.RemoveRange(filesToDelete);
             workBD.IndividualProjects.RemoveRange(projectsToDelete);
             workBD.Students.Remove(student);
             workBD.SaveChanges();
             return RedirectToAction("DeleteStudent");
         }
-
         public IActionResult DeleteEmployee()
         {
             var employees = workBD.Employees.Where(e => e.Role == 2 || e.Role == 3)
@@ -961,6 +969,11 @@ namespace ManagingIndividualProjects.Controllers
                 foreach (var student in students)
                 {
                     var projects = workBD.IndividualProjects.Where(p => p.Student == student.Id).ToList();
+                    var projectIds = projects.Select(p => p.Id).ToList();
+                    var filesToDelete = workBD.FilesStudents
+                        .Where(f => f.IndividualProjectId.HasValue && projectIds.Contains(f.IndividualProjectId.Value))
+                        .ToList();
+                    workBD.FilesStudents.RemoveRange(filesToDelete);
                     workBD.IndividualProjects.RemoveRange(projects);
                 }
                 workBD.Students.RemoveRange(students);
@@ -1000,7 +1013,7 @@ namespace ManagingIndividualProjects.Controllers
 
             return View(model);
         }
-        [HttpPost]
+        [HttpPost]  
         public IActionResult DeleteGroupTeacher(string selectedGroupTeacher)
         {
             if (!string.IsNullOrEmpty(selectedGroupTeacher))
@@ -1020,4 +1033,3 @@ namespace ManagingIndividualProjects.Controllers
         }
     }
 }
-

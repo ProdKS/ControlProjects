@@ -24,4 +24,5 @@ public partial class IndividualProject
     public virtual Student? StudentNavigation { get; set; }
 
     public virtual Subject? SubjectNavigation { get; set; }
+    public virtual ICollection<FilesStudent> FilesStudents { get; set; }
 }

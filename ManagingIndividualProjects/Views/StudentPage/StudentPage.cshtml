@@ -21,6 +21,7 @@
             @foreach (var IndividualProject in Model.IndividualProjects)
             {
                 var nameSubject = Model.Subjects.FirstOrDefault(d => d.Id == IndividualProject.Subject);
+                var filesHave = Model.Files.FirstOrDefault(d => d.IndividualProjectId == IndividualProject.Id);
                 string statusName = "";
                 bool flagReady = false;
                 string gradle = "";
@@ -87,13 +88,24 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <div class="text-right">                                
-                                
+                            <div class="text-right">                                                              
                                     <div class="text-right">
                                         @if(IndividualProject.Status == 3)
                                         {
                                             <a href="@Url.Action("EditTheme", "StudentPage", new { idproject = IndividualProject.Id })" class="btn btn-sm btn-primary">
-                                                <i class="fas fa-user"></i> change theme
+                                                <i class="fas fa-user"></i> Изменить тему
+                                            </a>
+                                        }
+                                        @if (filesHave == null)
+                                        {
+                                            <a href="@Url.Action("AddFile", "StudentPage", new { idproject = IndividualProject.Id })" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-user"></i> Добавить ZIP файл
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a href="@Url.Action("EditDeleteFile", "StudentPage", new { projectId = IndividualProject.Id })" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-user"></i> Изменить/удалить ZIP файл
                                             </a>
                                         }
                                         @if (flag == true)

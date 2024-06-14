@@ -18,6 +18,7 @@
         </div>
         @foreach (var IndividualProject in Model.IndividualProjects)
         {
+            var filesHave = Model.Files.FirstOrDefault(d => d.IndividualProjectId == IndividualProject.Id);
             var nameSubject = Model.Subjects.FirstOrDefault(d => d.Id == IndividualProject.Subject);
             var fioStudent = Model.Students.FirstOrDefault(x => x.Id == IndividualProject.Student);
             string statusName = "";
@@ -72,12 +73,10 @@
                             @if (nameSubject == null)
                             {
                                 <h2 class="lead"><b>Дисциплина удалена</b></h2>
-                                <p class="text-muted text-sm">Преподаватель не найден</p>
                             }
                             else
                             {
                                 <h2 class="lead"><b>Дисциплина: @nameSubject.Name</b></h2>
-                                <p class="text-muted text-sm">Преподаватель: @nameSubject.Teacher.Surname @nameSubject.Teacher.Name @nameSubject.Teacher.Pat</p>
                             }
                             <ul class="ml-4 mb-0 fa-ul text-muted">
                                 <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span>Статус: @statusName</li>
@@ -89,18 +88,19 @@
                 </div>
                 <div class="card-footer">
                     <div class="text-right">
-                        <a href="@Url.Action("AcceptProject", "TeacherPage", new { IndividualProjectid = IndividualProject.Id })" class="btn btn-sm btn-primary" style="background-color: green">
-                            <i class="fas fa-user"></i> Принять
-                        </a>
-                        <a href="@Url.Action("DeclineProject", "TeacherPage", new { IndividualProjectid = IndividualProject.Id })" class="btn btn-sm btn-primary" style="background-color: red">
-                            <i class="fas fa-user"></i> Отклонить
-                        </a>
-                        <a href="@Url.Action("EditProjectTheme", "TeacherPage", new { IndividualProjectid = IndividualProject.Id })" class="btn btn-sm btn-primary">
-                            <i class="fas fa-user"></i> Изменить
-                        </a>
-                        <a href="@Url.Action("AddEditGrade", "TeacherPage", new { idProject = IndividualProject.Id })" class="btn btn-sm btn-primary">
-                            <i class="fas fa-user"></i> Изменить оценку
-                        </a>
+                            <a href="@Url.Action("AcceptProject", "TeacherPage", new { IndividualProjectid = IndividualProject.Id })" class="btn btn-sm btn-primary" style="background-color: green">
+                                <i class="fas fa-user"></i> Принять
+                            </a>
+                            <a href="@Url.Action("DeclineProject", "TeacherPage", new { IndividualProjectid = IndividualProject.Id })" class="btn btn-sm btn-primary" style="background-color: red">
+                                <i class="fas fa-user"></i> Отклонить
+                            </a>
+                            <a href="@Url.Action("EditProjectTheme", "TeacherPage", new { IndividualProjectid = IndividualProject.Id })" class="btn btn-sm btn-primary">
+                                <i class="fas fa-user"></i> Изменить
+                            </a>
+                            <a href="@Url.Action("AddEditGrade", "TeacherPage", new { idProject = IndividualProject.Id })" class="btn btn-sm btn-primary">
+                                <i class="fas fa-user"></i> Изменить оценку
+                            </a>
+                        
                         @if(flag == false)
                         {
                             <a href="@Url.Action("AddFeedback", "TeacherPage", new { idProject = IndividualProject.Id })" class="btn btn-sm btn-primary">
@@ -111,6 +111,12 @@
                         {
                             <a href="@Url.Action("CheckEditFeedback", "TeacherPage", new { idProject = IndividualProject.Id })" class="btn btn-sm btn-primary">
                                 <i class="fas fa-user"></i> Просмотреть/изменить отзыв
+                            </a>
+                        }
+                        @if (filesHave != null)
+                        {
+                            <a href="@Url.Action("DownloadFile", "TeacherPage", new { projectID = IndividualProject.Id })" class="btn btn-sm btn-primary">
+                                <i class="fas fa-user"></i> Скачать проект
                             </a>
                         }
                         <a href="@Url.Action("DeleteProject", "TeacherPage", new { projectID = IndividualProject.Id })" class="btn btn-sm btn-primary" style="background-color: red; float: right">

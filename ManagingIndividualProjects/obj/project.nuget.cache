@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "RthOuC1xiGo8YvBTuxwV9I6czqubDInvKT3CoVvLYapL27OIDf88ZwxUC/wueFZ0qCcb66sZpfmPWYC21x55ZA==",
+  "dgSpecHash": "rjiU1BDyWqo80eLbR1DjNb8QzoTqfL6eBDMtuf9qSRUGVgdFFbKkz74JZ/XBvNRmNWXaAn36kKrIcQwThV5QDg==",
   "success": true,
   "projectFilePath": "C:\\Users\\kisli\\source\\repos\\ManagingIndividualProjects\\ManagingIndividualProjects\\ManagingIndividualProjects.csproj",
   "expectedPackageFiles": [
@@ -57,6 +57,7 @@
     "C:\\Users\\kisli\\.nuget\\packages\\microsoft.sqlserver.server\\1.0.0\\microsoft.sqlserver.server.1.0.0.nupkg.sha512",
     "C:\\Users\\kisli\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0\\microsoft.win32.systemevents.7.0.0.nupkg.sha512",
     "C:\\Users\\kisli\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\kisli\\.nuget\\packages\\pdfsharp\\6.1.0\\pdfsharp.6.1.0.nupkg.sha512",
     "C:\\Users\\kisli\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
     "C:\\Users\\kisli\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\kisli\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",

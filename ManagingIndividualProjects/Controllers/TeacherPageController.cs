@@ -20,7 +20,7 @@ namespace ManagingIndividualProjects.Controllers
             var hasClassroom = await workBD.Groups.AnyAsync(x => x.ClassroomTeacher == nowUserId);
             var subjects = await workBD.Subjects.ToListAsync();
             var students = await workBD.Students.ToListAsync();
-            
+            var files = workBD.FilesStudents.ToList();
             var takeSubjects = await workBD.Subjects.Where(x => x.Teacherid == nowUserId).ToListAsync();
             List<IndividualProject> individualProjectsList = new List<IndividualProject>();
             foreach (var subject in takeSubjects)
@@ -37,6 +37,7 @@ namespace ManagingIndividualProjects.Controllers
                 Students = students,
                 IsClassroom = hasClassroom,
                 Subjects = subjects,
+                Files = files,
             };
             return View(model);
         }
@@ -100,8 +101,14 @@ namespace ManagingIndividualProjects.Controllers
         public async Task<IActionResult> DeleteProject(int projectID)
         {
             var projectToRemove = await workBD.IndividualProjects.FindAsync(projectID);
+            var projectsToDelete = workBD.IndividualProjects.Where(p => p.Id == projectID);
             if (projectToRemove != null)
             {
+                var projectIds = projectsToDelete.Select(p => p.Id).ToList();
+                var filesToDelete = workBD.FilesStudents
+                    .Where(f => f.IndividualProjectId.HasValue && projectIds.Contains(f.IndividualProjectId.Value))
+                    .ToList();
+                workBD.FilesStudents.RemoveRange(filesToDelete);
                 workBD.IndividualProjects.Remove(projectToRemove);
                 await workBD.SaveChangesAsync();
             }
@@ -218,6 +225,14 @@ namespace ManagingIndividualProjects.Controllers
             await workBD.SaveChangesAsync();
 
             return RedirectToAction("TeacherPage");
+        }
+        public async Task<IActionResult> DownloadFile(int projectID)
+        {
+            var individualProject = await workBD.IndividualProjects.FindAsync(projectID);
+            var file = await workBD.FilesStudents.Where(x => x.IndividualProjectId == projectID).FirstOrDefaultAsync();
+            if (file == null)
+                return RedirectToAction("TeacherPage");
+            return File(file.FileData, "application/zip", file.FileName);
         }
     }
 }

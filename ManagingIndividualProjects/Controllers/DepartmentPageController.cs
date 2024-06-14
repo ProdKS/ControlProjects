@@ -2,11 +2,19 @@
 using ManagingIndividualProjects.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
 using System.Formats.Asn1;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text.RegularExpressions;
+using PdfSharp.Pdf;
+using PdfSharp.Drawing;
+using PdfSharp.Drawing.Layout;
+using PdfSharp.Pdf.AcroForms;
+
 
 namespace ManagingIndividualProjects.Controllers
 {
@@ -126,6 +134,8 @@ namespace ManagingIndividualProjects.Controllers
             {
                 return View();
             }
+
+            var department = await workBD.Departments.FindAsync(group.Department);
             var students = await workBD.Students
                 .Where(s => s.GroupDep == groupid)
                 .ToListAsync();
@@ -142,70 +152,166 @@ namespace ManagingIndividualProjects.Controllers
             var teachers = await workBD.Employees
                 .Where(e => teacherIds.Contains(e.Id))
                 .ToListAsync();
-            using (var package = new ExcelPackage())
+
+            var studentReportModels = students.Select((student, index) =>
             {
-                var worksheet = package.Workbook.Worksheets.Add("Students");
-
-                worksheet.Cells[1, 1].Value = "Студент";
-                worksheet.Cells[1, 2].Value = "Тема проекта";
-                worksheet.Cells[1, 3].Value = "Оценка";
-                worksheet.Cells[1, 4].Value = "Предмет";
-                worksheet.Cells[1, 5].Value = "Преподаватель";
-                worksheet.Cells[1, 6].Value = "Отзыв";
-                int row = 2;
-                foreach (var student in students)
+                var project = studentProjects.FirstOrDefault(ip => ip.Student == student.Id);
+                var subject = project != null ? subjects.FirstOrDefault(s => s.Id == project.Subject) : null;
+                return new StudentReportModel
                 {
-                    worksheet.Cells[row, 1].Value = $"{student.Surname} {student.Name} {student.Pat}";
+                    Number = index + 1,
+                    FullName = $"{student.Surname} {student.Name} {student.Pat}",
+                    Subject = subject?.Name ?? "отсутствует",
+                    Grade = project?.Gradle?.ToString() ?? "отсутствует",
+                    GradeText = project?.Feedback ?? "отсутствует"
+                };
+            }).ToList();
 
-                    var project = studentProjects.FirstOrDefault(ip => ip.Student == student.Id);
-                    if (project != null)
-                    {
-                        worksheet.Cells[row, 2].Value = project.NameTheme ?? "отсутствует";
-                        worksheet.Cells[row, 3].Value = project.Gradle?.ToString() ?? "отсутствует";
+            using (var stream = new MemoryStream())
+            {
+                var pdf = new PdfDocument();
+                var page = pdf.AddPage();
+                var gfx = XGraphics.FromPdfPage(page);
+                var font = new XFont("Arial", 10);
+                var boldFont = new XFont("Arial", 10);
+                var margin = 40;
+                var rect = new XRect(margin, margin, page.Width - 2 * margin, page.Height - 2 * margin);
+                gfx.DrawString("Краевое государственное автономное профессиональное образовательное учреждение \"Пермский авиационный техникум им. А.Д.Швецова\"", boldFont, XBrushes.Black, rect, XStringFormats.TopCenter);
+                gfx.DrawString("Семестр: 1", font, XBrushes.Black, new XRect(rect.Left, rect.Top + 40, rect.Width, 20), XStringFormats.TopLeft);
+                gfx.DrawString("№", font, XBrushes.Black, new XRect(rect.Right - 100, rect.Top + 40, 60, 20), XStringFormats.TopRight);
+                gfx.DrawString("Форма контроля: Индивидуальный проект", font, XBrushes.Black, new XRect(rect.Left, rect.Top + 60, rect.Width, 20), XStringFormats.TopLeft);
+                gfx.DrawString("Дата проведения", font, XBrushes.Black, new XRect(rect.Right - 200, rect.Top + 60, 200, 20), XStringFormats.TopRight);
+                gfx.DrawString($"Отделение: {department?.Name ?? "отсутствует"}", font, XBrushes.Black, new XRect(rect.Left, rect.Top + 80, rect.Width, 20), XStringFormats.TopLeft);
+                gfx.DrawString($"Группа: {group.Name}", font, XBrushes.Black, new XRect(rect.Right - 200, rect.Top + 80, 200, 20), XStringFormats.TopRight);
+                gfx.DrawString("Специальность: 09.02.07 Информационные системы и программирование", font, XBrushes.Black, new XRect(rect.Left, rect.Top + 100, rect.Width, 20), XStringFormats.TopLeft);
+                var tableStartY = rect.Top + 130;
+                var tableCellHeight = 20;
+                var tableColumnWidths = new[] { 30, 180, 180, 60, 60, 100 };
+                gfx.DrawRectangle(XPens.Black, rect.Left, tableStartY, tableColumnWidths.Sum(), tableCellHeight * 2);
+                gfx.DrawRectangle(XPens.Black, rect.Left, tableStartY, tableColumnWidths[0], tableCellHeight * 2);
+                gfx.DrawRectangle(XPens.Black, rect.Left + tableColumnWidths[0], tableStartY, tableColumnWidths[1], tableCellHeight * 2);
+                gfx.DrawRectangle(XPens.Black, rect.Left + tableColumnWidths[0] + tableColumnWidths[1], tableStartY, tableColumnWidths[2], tableCellHeight);
+                gfx.DrawRectangle(XPens.Black, rect.Left + tableColumnWidths[0] + tableColumnWidths[1] + tableColumnWidths[2], tableStartY, tableColumnWidths[3] + tableColumnWidths[4], tableCellHeight);
+                gfx.DrawRectangle(XPens.Black, rect.Left + tableColumnWidths[0] + tableColumnWidths[1] + tableColumnWidths[2], tableStartY + tableCellHeight, tableColumnWidths[3], tableCellHeight);
+                gfx.DrawRectangle(XPens.Black, rect.Left + tableColumnWidths[0] + tableColumnWidths[1] + tableColumnWidths[2] + tableColumnWidths[3], tableStartY + tableCellHeight, tableColumnWidths[4], tableCellHeight);
+                gfx.DrawRectangle(XPens.Black, rect.Left + tableColumnWidths[0] + tableColumnWidths[1] + tableColumnWidths[2] + tableColumnWidths[3] + tableColumnWidths[4], tableStartY, tableColumnWidths[5], tableCellHeight * 2);
+                gfx.DrawString("№", boldFont, XBrushes.Black, new XRect(rect.Left, tableStartY, tableColumnWidths[0], tableCellHeight * 2), XStringFormats.Center);
+                gfx.DrawString("Фамилия, Имя, Отчество", boldFont, XBrushes.Black, new XRect(rect.Left + tableColumnWidths[0], tableStartY, tableColumnWidths[1], tableCellHeight * 2), XStringFormats.Center);
+                gfx.DrawString("Дисциплина", boldFont, XBrushes.Black, new XRect(rect.Left + tableColumnWidths[0] + tableColumnWidths[1], tableStartY, tableColumnWidths[2], tableCellHeight), XStringFormats.Center);
+                gfx.DrawString("Дифференцированный зачет", boldFont, XBrushes.Black, new XRect(rect.Left + tableColumnWidths[0] + tableColumnWidths[1] + tableColumnWidths[2], tableStartY, tableColumnWidths[3] + tableColumnWidths[4], tableCellHeight), XStringFormats.Center);
+                gfx.DrawString("Цифрой", boldFont, XBrushes.Black, new XRect(rect.Left + tableColumnWidths[0] + tableColumnWidths[1] + tableColumnWidths[2], tableStartY + tableCellHeight, tableColumnWidths[3], tableCellHeight), XStringFormats.Center);
+                gfx.DrawString("Полностью", boldFont, XBrushes.Black, new XRect(rect.Left + tableColumnWidths[0] + tableColumnWidths[1] + tableColumnWidths[2] + tableColumnWidths[3], tableStartY + tableCellHeight, tableColumnWidths[4], tableCellHeight), XStringFormats.Center);
+                gfx.DrawString("Подпись", boldFont, XBrushes.Black, new XRect(rect.Left + tableColumnWidths[0] + tableColumnWidths[1] + tableColumnWidths[2] + tableColumnWidths[3] + tableColumnWidths[4], tableStartY, tableColumnWidths[5], tableCellHeight * 2), XStringFormats.Center);
+                var currentY = tableStartY + tableCellHeight * 2;
+                foreach (var student in studentReportModels)
+                {
+                    gfx.DrawRectangle(XPens.Black, rect.Left, currentY, tableColumnWidths[0], tableCellHeight);
+                    gfx.DrawRectangle(XPens.Black, rect.Left + tableColumnWidths[0], currentY, tableColumnWidths[1], tableCellHeight);
+                    gfx.DrawRectangle(XPens.Black, rect.Left + tableColumnWidths[0] + tableColumnWidths[1], currentY, tableColumnWidths[2], tableCellHeight);
+                    gfx.DrawRectangle(XPens.Black, rect.Left + tableColumnWidths[0] + tableColumnWidths[1] + tableColumnWidths[2], currentY, tableColumnWidths[3], tableCellHeight);
+                    gfx.DrawRectangle(XPens.Black, rect.Left + tableColumnWidths[0] + tableColumnWidths[1] + tableColumnWidths[2] + tableColumnWidths[3], currentY, tableColumnWidths[4], tableCellHeight);
+                    gfx.DrawRectangle(XPens.Black, rect.Left + tableColumnWidths[0] + tableColumnWidths[1] + tableColumnWidths[2] + tableColumnWidths[3] + tableColumnWidths[4], currentY, tableColumnWidths[5], tableCellHeight);
 
-                        var subject = subjects.FirstOrDefault(s => s.Id == project.Subject);
-                        if (subject != null)
-                        {
-                            worksheet.Cells[row, 4].Value = subject.Name ?? "отсутствует";
+                    gfx.DrawString(student.Number.ToString(), font, XBrushes.Black, new XRect(rect.Left, currentY, tableColumnWidths[0], tableCellHeight), XStringFormats.Center);
+                    gfx.DrawString(student.FullName, font, XBrushes.Black, new XRect(rect.Left + tableColumnWidths[0], currentY, tableColumnWidths[1], tableCellHeight), XStringFormats.CenterLeft);
+                    gfx.DrawString(student.Subject, font, XBrushes.Black, new XRect(rect.Left + tableColumnWidths[0] + tableColumnWidths[1], currentY, tableColumnWidths[2], tableCellHeight), XStringFormats.CenterLeft);
+                    gfx.DrawString(student.Grade, font, XBrushes.Black, new XRect(rect.Left + tableColumnWidths[0] + tableColumnWidths[1] + tableColumnWidths[2], currentY, tableColumnWidths[3], tableCellHeight), XStringFormats.Center);
+                    gfx.DrawString(student.GradeText, font, XBrushes.Black, new XRect(rect.Left + tableColumnWidths[0] + tableColumnWidths[1] + tableColumnWidths[2] + tableColumnWidths[3], currentY, tableColumnWidths[4], tableCellHeight), XStringFormats.Center);
+                    gfx.DrawString(string.Empty, font, XBrushes.Black, new XRect(rect.Left + tableColumnWidths[0] + tableColumnWidths[1] + tableColumnWidths[2] + tableColumnWidths[3] + tableColumnWidths[4], currentY, tableColumnWidths[5], tableCellHeight), XStringFormats.Center);
 
-                            var teacher = teachers.FirstOrDefault(t => t.Id == subject.Teacherid);
-                            if (teacher != null)
-                            {
-                                worksheet.Cells[row, 5].Value = $"{teacher.Surname} {teacher.Name} {teacher.Pat}";
-                            }
-                            else
-                            {
-                                worksheet.Cells[row, 5].Value = "отсутствует";
-                            }
-                        }
-                        else
-                        {
-                            worksheet.Cells[row, 4].Value = "отсутствует";
-                            worksheet.Cells[row, 5].Value = "отсутствует";
-                        }
-                        worksheet.Cells[row, 6].Value = project.Feedback;
-                    }
-                    else
-                    {
-                        worksheet.Cells[row, 2].Value = "отсутствует";
-                        worksheet.Cells[row, 3].Value = "отсутствует";
-                        worksheet.Cells[row, 4].Value = "отсутствует";
-                        worksheet.Cells[row, 5].Value = "отсутствует";
-                        worksheet.Cells[row, 6].Value = "отсутствует";
-                    }
-                    row++;
+                    currentY += tableCellHeight;
                 }
-                worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
-                var stream = new MemoryStream();
-                package.SaveAs(stream);
-                stream.Position = 0;
-                var fileName = $"Список_группы_{group.Name}.xlsx";
-                var contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                return File(stream, contentType, fileName);
+
+                pdf.Save(stream);
+                var fileName = $"Список_группы_{group.Name}.pdf";
+                return File(stream.ToArray(), "application/pdf", fileName);
             }
         }
-        public async Task<IActionResult> GenerateDocDebtorsGroup(int groupid)
+        private PdfDocument CreatePdfDocument(List<StudentReportModel> students, string departmentName, string groupName)
         {
+            var document = new PdfDocument();
+            var page = document.AddPage();
+            var gfx = XGraphics.FromPdfPage(page);
+            var font = new XFont("Arial", 10);
+            var boldFont = new XFont("Arial", 10);
+            double marginLeft = 40;
+            double marginTop = 60;
+            double tableWidth = page.Width - 2 * marginLeft;
+            double col1Width = 30;
+            double col2Width = 150;
+            double col3Width = 100;
+            double col4Width = 60;
+            double col5Width = 60;
+            double rowHeight = 20;
+            gfx.DrawString("Краевое государственное автономное профессиональное образовательное учреждение \"Пермский авиационный техникум им. А.Д.Швецова\"", boldFont, XBrushes.Black, new XRect(0, 20, page.Width, 30), XStringFormats.TopCenter);
+            gfx.DrawString($"Отделение: {departmentName}", font, XBrushes.Black, new XRect(marginLeft, marginTop, tableWidth, rowHeight), XStringFormats.TopLeft);
+            gfx.DrawString($"Группа: {groupName}", font, XBrushes.Black, new XRect(marginLeft, marginTop + rowHeight, tableWidth, rowHeight), XStringFormats.TopLeft);
+            double currentY = marginTop + 2 * rowHeight;
+            gfx.DrawRectangle(XPens.Black, marginLeft, currentY, col1Width, rowHeight);
+            gfx.DrawRectangle(XPens.Black, marginLeft + col1Width, currentY, col2Width, rowHeight);
+            gfx.DrawRectangle(XPens.Black, marginLeft + col1Width + col2Width, currentY, col3Width, rowHeight);
+            gfx.DrawRectangle(XPens.Black, marginLeft + col1Width + col2Width + col3Width, currentY, col4Width, rowHeight);
+            gfx.DrawRectangle(XPens.Black, marginLeft + col1Width + col2Width + col3Width + col4Width, currentY, col5Width, rowHeight);
+
+            gfx.DrawString("№", boldFont, XBrushes.Black, new XRect(marginLeft, currentY, col1Width, rowHeight), XStringFormats.Center);
+            gfx.DrawString("Фамилия, Имя, Отчество", boldFont, XBrushes.Black, new XRect(marginLeft + col1Width, currentY, col2Width, rowHeight), XStringFormats.Center);
+            gfx.DrawString("Дисциплина", boldFont, XBrushes.Black, new XRect(marginLeft + col1Width + col2Width, currentY, col3Width, rowHeight), XStringFormats.Center);
+            gfx.DrawString("Цифрой", boldFont, XBrushes.Black, new XRect(marginLeft + col1Width + col2Width + col3Width, currentY, col4Width, rowHeight), XStringFormats.Center);
+            gfx.DrawString("Полностью", boldFont, XBrushes.Black, new XRect(marginLeft + col1Width + col2Width + col3Width + col4Width, currentY, col5Width, rowHeight), XStringFormats.Center);
+
+            // Table rows
+            currentY += rowHeight;
+            int studentIndex = 1;
+            foreach (var student in students)
+            {
+                gfx.DrawRectangle(XPens.Black, marginLeft, currentY, col1Width, rowHeight);
+                gfx.DrawRectangle(XPens.Black, marginLeft + col1Width, currentY, col2Width, rowHeight);
+                gfx.DrawRectangle(XPens.Black, marginLeft + col1Width + col2Width, currentY, col3Width, rowHeight);
+                gfx.DrawRectangle(XPens.Black, marginLeft + col1Width + col2Width + col3Width, currentY, col4Width, rowHeight);
+                gfx.DrawRectangle(XPens.Black, marginLeft + col1Width + col2Width + col3Width + col4Width, currentY, col5Width, rowHeight);
+
+                gfx.DrawString(studentIndex.ToString(), font, XBrushes.Black, new XRect(marginLeft, currentY, col1Width, rowHeight), XStringFormats.Center);
+                gfx.DrawString(TrimTextToFit(student.FullName, font, col2Width, gfx), font, XBrushes.Black, new XRect(marginLeft + col1Width, currentY, col2Width, rowHeight), XStringFormats.Center);
+                gfx.DrawString("История", font, XBrushes.Black, new XRect(marginLeft + col1Width + col2Width, currentY, col3Width, rowHeight), XStringFormats.Center);
+
+                currentY += rowHeight;
+                studentIndex++;
+            }
+
+            // Footer
+            currentY += rowHeight;
+            gfx.DrawString("Зав отделением: Куртагина М. В.", boldFont, XBrushes.Black, new XRect(marginLeft, currentY, tableWidth, rowHeight), XStringFormats.TopLeft);
+
+            return document;
+        }
+
+        // Helper method to trim text to fit within a specified width
+        private string TrimTextToFit(string text, XFont font, double width, XGraphics gfx)
+        {
+            while (gfx.MeasureString(text, font).Width > width)
+            {
+                if (text.Length > 3)
+                {
+                    text = text.Substring(0, text.Length - 4) + "...";
+                }
+                else
+                {
+                    return "...";
+                }
+            }
+            return text;
+        }
+
+        public class StudentReportModel
+        {
+            public int Number { get; set; }
+            public string FullName { get; set; }
+            public string Subject { get; set; }
+            public string Grade { get; set; }
+            public string GradeText { get; set; }
+        }
+        public async Task<IActionResult> GenerateDocDebtorsGroup(int groupid)
+            {
             ViewBag.CurrentRole = Convert.ToInt32(HttpContext.Session.GetString("Role"));
             var group = await workBD.Groups.FindAsync(groupid);
             if (group == null)
@@ -559,6 +665,92 @@ namespace ManagingIndividualProjects.Controllers
     //        }
 
     //        workBD.SaveChanges();
+    //    }
+    //}
+    //public async Task<IActionResult> GenerateDocGroup(int groupid)
+    //{
+    //    ViewBag.CurrentRole = Convert.ToInt32(HttpContext.Session.GetString("Role"));
+    //    var group = await workBD.Groups.FindAsync(groupid);
+    //    if (group == null)
+    //    {
+    //        return View();
+    //    }
+    //    var students = await workBD.Students
+    //        .Where(s => s.GroupDep == groupid)
+    //        .ToListAsync();
+    //    var studentIds = students.Select(s => s.Id).ToList();
+
+    //    var studentProjects = await workBD.IndividualProjects
+    //        .Where(ip => studentIds.Contains(ip.Student.Value))
+    //        .ToListAsync();
+    //    var subjectIds = studentProjects.Select(ip => ip.Subject).ToList();
+    //    var subjects = await workBD.Subjects
+    //        .Where(s => subjectIds.Contains(s.Id))
+    //        .ToListAsync();
+    //    var teacherIds = subjects.Select(s => s.Teacherid).ToList();
+    //    var teachers = await workBD.Employees
+    //        .Where(e => teacherIds.Contains(e.Id))
+    //        .ToListAsync();
+    //    using (var package = new ExcelPackage())
+    //    {
+    //        var worksheet = package.Workbook.Worksheets.Add("Students");
+
+    //        worksheet.Cells[1, 1].Value = "Студент";
+    //        worksheet.Cells[1, 2].Value = "Тема проекта";
+    //        worksheet.Cells[1, 3].Value = "Оценка";
+    //        worksheet.Cells[1, 4].Value = "Предмет";
+    //        worksheet.Cells[1, 5].Value = "Преподаватель";
+    //        worksheet.Cells[1, 6].Value = "Отзыв";
+    //        int row = 2;
+    //        foreach (var student in students)
+    //        {
+    //            worksheet.Cells[row, 1].Value = $"{student.Surname} {student.Name} {student.Pat}";
+
+    //            var project = studentProjects.FirstOrDefault(ip => ip.Student == student.Id);
+    //            if (project != null)
+    //            {
+    //                worksheet.Cells[row, 2].Value = project.NameTheme ?? "отсутствует";
+    //                worksheet.Cells[row, 3].Value = project.Gradle?.ToString() ?? "отсутствует";
+
+    //                var subject = subjects.FirstOrDefault(s => s.Id == project.Subject);
+    //                if (subject != null)
+    //                {
+    //                    worksheet.Cells[row, 4].Value = subject.Name ?? "отсутствует";
+
+    //                    var teacher = teachers.FirstOrDefault(t => t.Id == subject.Teacherid);
+    //                    if (teacher != null)
+    //                    {
+    //                        worksheet.Cells[row, 5].Value = $"{teacher.Surname} {teacher.Name} {teacher.Pat}";
+    //                    }
+    //                    else
+    //                    {
+    //                        worksheet.Cells[row, 5].Value = "отсутствует";
+    //                    }
+    //                }
+    //                else
+    //                {
+    //                    worksheet.Cells[row, 4].Value = "отсутствует";
+    //                    worksheet.Cells[row, 5].Value = "отсутствует";
+    //                }
+    //                worksheet.Cells[row, 6].Value = project.Feedback;
+    //            }
+    //            else
+    //            {
+    //                worksheet.Cells[row, 2].Value = "отсутствует";
+    //                worksheet.Cells[row, 3].Value = "отсутствует";
+    //                worksheet.Cells[row, 4].Value = "отсутствует";
+    //                worksheet.Cells[row, 5].Value = "отсутствует";
+    //                worksheet.Cells[row, 6].Value = "отсутствует";
+    //            }
+    //            row++;
+    //        }
+    //        worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+    //        var stream = new MemoryStream();
+    //        package.SaveAs(stream);
+    //        stream.Position = 0;
+    //        var fileName = $"Список_группы_{group.Name}.xlsx";
+    //        var contentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+    //        return File(stream, contentType, fileName);
     //    }
     //}
 }
