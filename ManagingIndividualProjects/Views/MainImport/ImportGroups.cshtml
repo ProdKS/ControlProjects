@@ -11,6 +11,12 @@
         <form asp-action="ImportGroups" method="post" enctype="multipart/form-data">
             <div class="card-body">
                 <div class="form-group">
+                    @{
+                        if (TempData["Notification"] != null)
+                        {
+                            <div class="alert alert-info">@TempData["Notification"]</div>
+                        }
+                    }
                     <label for="myDropdown">Выберите отделение:</label>
                     <select id="myDropdown" name="selectedDepartmentId" class="form-control">
                         @foreach (var department in departments)

@@ -42,7 +42,7 @@ namespace ManagingIndividualProjects.Controllers
             }
             return View(viewModel);
         }
-
+        
         public async Task<IActionResult> DepartmentDetailView(int departmentId)
         {
             ViewBag.CurrentRole = Convert.ToInt32(HttpContext.Session.GetString("Role"));
@@ -126,6 +126,32 @@ namespace ManagingIndividualProjects.Controllers
                 return View(model);
             }
         }
+        public string GradleToText(int? gradle)
+        {
+            string gradleText = "";
+            if (gradle != null)
+            {
+                if (gradle == 5)
+                {
+                    gradleText = "Отлично";
+                }
+                else if (gradle == 4)
+                {
+                    gradleText = "Хорошо";
+                }
+                else if (gradle == 3)
+                {
+                    gradleText = "Удовл";
+                }
+                else if (gradle == 2)
+                {
+                    gradleText = "Неуд.";
+                }
+                else gradleText = "";
+            }
+            return gradleText;
+        }
+        
         public async Task<IActionResult> GenerateDocGroup(int groupid)
         {
             ViewBag.CurrentRole = Convert.ToInt32(HttpContext.Session.GetString("Role"));
@@ -134,13 +160,12 @@ namespace ManagingIndividualProjects.Controllers
             {
                 return View();
             }
-
-            var department = await workBD.Departments.FindAsync(group.Department);
+            var departments = await workBD.Departments.Where(x => x.Id == group.DepartmentId).ToListAsync();
+            string departmentName = departments.FirstOrDefault()?.Name;
             var students = await workBD.Students
                 .Where(s => s.GroupDep == groupid)
                 .ToListAsync();
             var studentIds = students.Select(s => s.Id).ToList();
-
             var studentProjects = await workBD.IndividualProjects
                 .Where(ip => studentIds.Contains(ip.Student.Value))
                 .ToListAsync();
@@ -152,21 +177,20 @@ namespace ManagingIndividualProjects.Controllers
             var teachers = await workBD.Employees
                 .Where(e => teacherIds.Contains(e.Id))
                 .ToListAsync();
-
             var studentReportModels = students.Select((student, index) =>
             {
                 var project = studentProjects.FirstOrDefault(ip => ip.Student == student.Id);
                 var subject = project != null ? subjects.FirstOrDefault(s => s.Id == project.Subject) : null;
+                string gradletext = "";
                 return new StudentReportModel
                 {
                     Number = index + 1,
                     FullName = $"{student.Surname} {student.Name} {student.Pat}",
-                    Subject = subject?.Name ?? "отсутствует",
-                    Grade = project?.Gradle?.ToString() ?? "отсутствует",
-                    GradeText = project?.Feedback ?? "отсутствует"
+                    Subject = subject?.Name ?? "",
+                    Grade = project?.Gradle?.ToString() ?? "",
+                    GradeText = GradleToText(project?.Gradle)
                 };
             }).ToList();
-
             using (var stream = new MemoryStream())
             {
                 var pdf = new PdfDocument();
@@ -174,19 +198,21 @@ namespace ManagingIndividualProjects.Controllers
                 var gfx = XGraphics.FromPdfPage(page);
                 var font = new XFont("Arial", 10);
                 var boldFont = new XFont("Arial", 10);
-                var margin = 40;
+                var margin = 40; 
                 var rect = new XRect(margin, margin, page.Width - 2 * margin, page.Height - 2 * margin);
-                gfx.DrawString("Краевое государственное автономное профессиональное образовательное учреждение \"Пермский авиационный техникум им. А.Д.Швецова\"", boldFont, XBrushes.Black, rect, XStringFormats.TopCenter);
-                gfx.DrawString("Семестр: 1", font, XBrushes.Black, new XRect(rect.Left, rect.Top + 40, rect.Width, 20), XStringFormats.TopLeft);
-                gfx.DrawString("№", font, XBrushes.Black, new XRect(rect.Right - 100, rect.Top + 40, 60, 20), XStringFormats.TopRight);
+                var rect2 = new XRect(margin, 60, page.Width - 2 * margin, page.Height - 2 * margin);
+                gfx.DrawString("Краевое государственное автономное профессиональное образовательное учреждение \"Пермский\"", boldFont, XBrushes.Black, rect, XStringFormats.TopCenter);
+                gfx.DrawString("авиационный техникум им.А.Д.Швецова\"", boldFont, XBrushes.Black, rect2, XStringFormats.TopCenter);
+                gfx.DrawString("Семестр: 2       20   - 20    учебного года", font, XBrushes.Black, new XRect(rect.Left, rect.Top + 40, rect.Width, 20), XStringFormats.TopLeft);
+                gfx.DrawString("№                    ", font, XBrushes.Black, new XRect(rect.Right - 100, rect.Top + 40, 60, 20), XStringFormats.TopRight);
                 gfx.DrawString("Форма контроля: Индивидуальный проект", font, XBrushes.Black, new XRect(rect.Left, rect.Top + 60, rect.Width, 20), XStringFormats.TopLeft);
-                gfx.DrawString("Дата проведения", font, XBrushes.Black, new XRect(rect.Right - 200, rect.Top + 60, 200, 20), XStringFormats.TopRight);
-                gfx.DrawString($"Отделение: {department?.Name ?? "отсутствует"}", font, XBrushes.Black, new XRect(rect.Left, rect.Top + 80, rect.Width, 20), XStringFormats.TopLeft);
-                gfx.DrawString($"Группа: {group.Name}", font, XBrushes.Black, new XRect(rect.Right - 200, rect.Top + 80, 200, 20), XStringFormats.TopRight);
+                gfx.DrawString("Дата проведения         ", font, XBrushes.Black, new XRect(rect.Right - 200, rect.Top + 60, 200, 20), XStringFormats.TopRight);
+                gfx.DrawString($"Отделение: {departmentName ?? "отсутствует"}", font, XBrushes.Black, new XRect(rect.Left, rect.Top + 80, rect.Width, 20), XStringFormats.TopLeft);
+                gfx.DrawString($"Группа: {group.Name}        ", font, XBrushes.Black, new XRect(rect.Right - 200, rect.Top + 80, 200, 20), XStringFormats.TopRight);
                 gfx.DrawString("Специальность: 09.02.07 Информационные системы и программирование", font, XBrushes.Black, new XRect(rect.Left, rect.Top + 100, rect.Width, 20), XStringFormats.TopLeft);
                 var tableStartY = rect.Top + 130;
                 var tableCellHeight = 20;
-                var tableColumnWidths = new[] { 30, 180, 180, 60, 60, 100 };
+                var tableColumnWidths = new[] { 30, 180, 140, 50, 90, 60 };
                 gfx.DrawRectangle(XPens.Black, rect.Left, tableStartY, tableColumnWidths.Sum(), tableCellHeight * 2);
                 gfx.DrawRectangle(XPens.Black, rect.Left, tableStartY, tableColumnWidths[0], tableCellHeight * 2);
                 gfx.DrawRectangle(XPens.Black, rect.Left + tableColumnWidths[0], tableStartY, tableColumnWidths[1], tableCellHeight * 2);
@@ -213,8 +239,8 @@ namespace ManagingIndividualProjects.Controllers
                     gfx.DrawRectangle(XPens.Black, rect.Left + tableColumnWidths[0] + tableColumnWidths[1] + tableColumnWidths[2] + tableColumnWidths[3] + tableColumnWidths[4], currentY, tableColumnWidths[5], tableCellHeight);
 
                     gfx.DrawString(student.Number.ToString(), font, XBrushes.Black, new XRect(rect.Left, currentY, tableColumnWidths[0], tableCellHeight), XStringFormats.Center);
-                    gfx.DrawString(student.FullName, font, XBrushes.Black, new XRect(rect.Left + tableColumnWidths[0], currentY, tableColumnWidths[1], tableCellHeight), XStringFormats.CenterLeft);
-                    gfx.DrawString(student.Subject, font, XBrushes.Black, new XRect(rect.Left + tableColumnWidths[0] + tableColumnWidths[1], currentY, tableColumnWidths[2], tableCellHeight), XStringFormats.CenterLeft);
+                    gfx.DrawString(student.FullName, font, XBrushes.Black, new XRect(rect.Left + tableColumnWidths[0], currentY, tableColumnWidths[1], tableCellHeight), XStringFormats.Center);
+                    gfx.DrawString(student.Subject, font, XBrushes.Black, new XRect(rect.Left + tableColumnWidths[0] + tableColumnWidths[1], currentY, tableColumnWidths[2], tableCellHeight), XStringFormats.Center);
                     gfx.DrawString(student.Grade, font, XBrushes.Black, new XRect(rect.Left + tableColumnWidths[0] + tableColumnWidths[1] + tableColumnWidths[2], currentY, tableColumnWidths[3], tableCellHeight), XStringFormats.Center);
                     gfx.DrawString(student.GradeText, font, XBrushes.Black, new XRect(rect.Left + tableColumnWidths[0] + tableColumnWidths[1] + tableColumnWidths[2] + tableColumnWidths[3], currentY, tableColumnWidths[4], tableCellHeight), XStringFormats.Center);
                     gfx.DrawString(string.Empty, font, XBrushes.Black, new XRect(rect.Left + tableColumnWidths[0] + tableColumnWidths[1] + tableColumnWidths[2] + tableColumnWidths[3] + tableColumnWidths[4], currentY, tableColumnWidths[5], tableCellHeight), XStringFormats.Center);
@@ -223,7 +249,7 @@ namespace ManagingIndividualProjects.Controllers
                 }
 
                 pdf.Save(stream);
-                var fileName = $"Список_группы_{group.Name}.pdf";
+                var fileName = $"Сводка_{group.Name}_Индивидуальные_проекты.pdf";
                 return File(stream.ToArray(), "application/pdf", fileName);
             }
         }
@@ -285,7 +311,6 @@ namespace ManagingIndividualProjects.Controllers
             return document;
         }
 
-        // Helper method to trim text to fit within a specified width
         private string TrimTextToFit(string text, XFont font, double width, XGraphics gfx)
         {
             while (gfx.MeasureString(text, font).Width > width)

@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Text;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Linq;
+using System.IO.Compression;
 
 namespace ManagingIndividualProjects.Controllers
 {
@@ -28,6 +29,11 @@ namespace ManagingIndividualProjects.Controllers
             return View();
         }
         public IActionResult ImportSubjects()
+        {
+            ViewBag.CurrentRole = Convert.ToInt32(HttpContext.Session.GetString("Role"));
+            return View();
+        }
+        public async Task<IActionResult> CheckRules()
         {
             ViewBag.CurrentRole = Convert.ToInt32(HttpContext.Session.GetString("Role"));
             return View();
@@ -56,12 +62,13 @@ namespace ManagingIndividualProjects.Controllers
             ViewBag.Groups = groups;
             return View();
         }
-        [HttpPost]
+        [HttpPost]//
         public async Task<IActionResult> ImportSubjects(IFormFile file)
         {
             if (file == null || file.Length == 0)
             {
                 ModelState.AddModelError("File", "Please upload a valid file.");
+                TempData["Notification"] = "Ошибка.";
                 return RedirectToAction("ImportSubjects");
             }
             using (var reader = new StreamReader(file.OpenReadStream()))
@@ -109,16 +116,18 @@ namespace ManagingIndividualProjects.Controllers
 
                     await workBD.Subjects.AddRangeAsync(subjects);
                     await workBD.SaveChangesAsync();
+                    TempData["Notification"] = "Успешно.";
                 }
             }
             return RedirectToAction("ImportSubjects");
         }
-        [HttpPost]
+        [HttpPost]//
         public async Task<IActionResult> ImportStudents(IFormFile file, int selectedGroupId)
         {
             if (file == null || file.Length == 0)
             {
                 ModelState.AddModelError("File", "Please upload a valid file.");
+                TempData["Notification"] = "Ошибка.";
                 return RedirectToAction("ImportStudents");
             }
 
@@ -167,16 +176,18 @@ namespace ManagingIndividualProjects.Controllers
 
                     await workBD.Students.AddRangeAsync(students);
                     await workBD.SaveChangesAsync();
+                    TempData["Notification"] = "Успешно.";
                 }
             }
             return RedirectToAction("ImportStudents");
         }
-        [HttpPost]
+        [HttpPost]//
         public async Task<IActionResult> ImportTeachers(IFormFile file)
         {
             if (file == null || file.Length == 0)
             {
                 ModelState.AddModelError("File", "Please upload a valid file.");
+                TempData["Notification"] = "Ошибка.";
                 return RedirectToAction("ImportTeachers");
             }
 
@@ -224,16 +235,18 @@ namespace ManagingIndividualProjects.Controllers
 
                     await workBD.Employees.AddRangeAsync(teachers);
                     await workBD.SaveChangesAsync();
+                    TempData["Notification"] = "Успешно.";
                 }
             }
             return RedirectToAction("ImportTeachers");
         }
-        [HttpPost]
+        [HttpPost]//
         public async Task<IActionResult> ImportClassrooms(IFormFile file)
         {
             if (file == null || file.Length == 0)
             {
                 ModelState.AddModelError("File", "Please upload a valid file.");
+                TempData["Notification"] = "Ошибка.";
                 return RedirectToAction("ImportClassroomTeachers");
             }
 
@@ -281,16 +294,18 @@ namespace ManagingIndividualProjects.Controllers
 
                     await workBD.Employees.AddRangeAsync(classroomTeachers);
                     await workBD.SaveChangesAsync();
+                    TempData["Notification"] = "Успешно.";
                 }
             }
             return RedirectToAction("ImportClassroomTeachers");
         }
-        [HttpPost]
+        [HttpPost]//
         public async Task<IActionResult> ImportGroups(IFormFile file, int selectedDepartmentId)
         {
             if (file == null || file.Length == 0)
             {
                 ModelState.AddModelError("File", "Please upload a valid file.");
+                TempData["Notification"] = "Ошибка.";
                 return RedirectToAction("ImportGroups");
             }
 
@@ -337,19 +352,20 @@ namespace ManagingIndividualProjects.Controllers
                             return RedirectToAction("ImportGroups");
                         }
                     }
-
                     await workBD.Groups.AddRangeAsync(groups);
                     await workBD.SaveChangesAsync();
+                    TempData["Notification"] = "Успешно.";
                 }
             }
             return RedirectToAction("ImportGroups");
         }
-        [HttpPost]
+        [HttpPost]//
         public async Task<IActionResult> ImportGroupsEmployee(IFormFile file)
         {
             if (file == null || file.Length == 0)
             {
                 ModelState.AddModelError("File", "Please upload a valid file.");
+                TempData["Notification"] = "Ошибка.";
                 return RedirectToAction("ImportGroupsEmployee");
             }
 
@@ -401,6 +417,7 @@ namespace ManagingIndividualProjects.Controllers
                     await workBD.SaveChangesAsync();
                 }
             }
+            TempData["Notification"] = "Успешно.";
             return RedirectToAction("ImportGroupsEmployee");
         }
         public async Task<IActionResult> goToMain()
@@ -458,7 +475,8 @@ namespace ManagingIndividualProjects.Controllers
                                         teacher.Role = 3;
                                         workBD.Employees.Add(teacher);
                                         await workBD.SaveChangesAsync();
-                                        return RedirectToAction("MainImport");
+                                        TempData["Notification"] = "Успешно.";
+                                        return RedirectToAction("AddTeacher");
                                     }    
                                 }
                             }
@@ -468,6 +486,7 @@ namespace ManagingIndividualProjects.Controllers
                 else
                 {
                     ModelState.AddModelError("Ошибка", "Заполните данные");
+                    TempData["Notification"] = "Заполните данные.";
                     return View();
                 }
             }
@@ -498,7 +517,8 @@ namespace ManagingIndividualProjects.Controllers
                                         teacher.Role = 2;
                                         workBD.Employees.Add(teacher);
                                         await workBD.SaveChangesAsync();
-                                        return RedirectToAction("MainImport");
+                                        TempData["Notification"] = "Успешно.";
+                                        return RedirectToAction("AddClassroom");
                                     }
                                 }
                             }
@@ -508,6 +528,7 @@ namespace ManagingIndividualProjects.Controllers
                 else
                 {
                     ModelState.AddModelError("Ошибка", "Заполните данные");
+                    TempData["Notification"] = "Заполните данные.";
                     return View();
                 }
             }
@@ -535,6 +556,7 @@ namespace ManagingIndividualProjects.Controllers
             if (group == null)
             {
                 ModelState.AddModelError("Group", "Группа не найдена");
+                TempData["Notification"] = "Ошибка.";
                 return RedirectToAction("AppointClassroom");
             }
 
@@ -542,13 +564,15 @@ namespace ManagingIndividualProjects.Controllers
             if (teacher == null)
             {
                 ModelState.AddModelError("Teacher", "Учитель не найден");
+                TempData["Notification"] = "Ошибка.";
                 return RedirectToAction("AppointClassroom");
             }
 
             group.ClassroomTeacher = selectedClassroomId;
             await workBD.SaveChangesAsync();
+            TempData["Notification"] = "Успешно.";
 
-            return RedirectToAction("MainImport");
+            return RedirectToAction("AppointClassroom");
         }
         public async Task<IActionResult> AddSubject()
         {
@@ -568,7 +592,8 @@ namespace ManagingIndividualProjects.Controllers
                 subject.Teacherid = selectedClassroomId;
                 workBD.Subjects.Add(subject);
                 await workBD.SaveChangesAsync();
-                return RedirectToAction("MainImport");
+                TempData["Notification"] = "Удачно.";
+                return RedirectToAction("AddSubject");
             }
             var teachers = await workBD.Employees
                 .Where(e => e.Role == 3)
@@ -605,7 +630,8 @@ namespace ManagingIndividualProjects.Controllers
                         }
                         workBD.Groups.Add(group);
                         await workBD.SaveChangesAsync();
-                        return RedirectToAction("MainImport");
+                        TempData["Notification"] = "Удачно.";
+                        return RedirectToAction("AddGroup");
                     }                   
                 }               
             }
@@ -660,7 +686,8 @@ namespace ManagingIndividualProjects.Controllers
 
                         workBD.EmployeeGroups.Add(employeeGroup);
                         await workBD.SaveChangesAsync();
-                        return RedirectToAction("MainImport");
+                        TempData["Notification"] = "Удачно.";
+                        return RedirectToAction("AddEmployeeGroup");
                     }
                 }             
             }
@@ -733,7 +760,8 @@ namespace ManagingIndividualProjects.Controllers
 
                                             workBD.Students.Add(student);
                                             await workBD.SaveChangesAsync();
-                                            return RedirectToAction("MainImport");
+                                            TempData["Notification"] = "Удачно.";
+                                            return RedirectToAction("AddStudent");
                                         }
                                     }
                                 }
@@ -741,7 +769,8 @@ namespace ManagingIndividualProjects.Controllers
                         }
                     }
                 }
-            }                          
+            }
+            else TempData["Notification"] = "Ошибка.";
             var groups = await workBD.Groups.Where(x => x.IsDepartment != 1).ToListAsync();
             model.GroupOptions = groups.Select(g => new SelectListItem
             {
@@ -831,6 +860,7 @@ namespace ManagingIndividualProjects.Controllers
 
             if (student == null)
             {
+                TempData["Notification"] = "Ошибка.";
                 return RedirectToAction("DeleteStudent");
             }
             var projectsToDelete = workBD.IndividualProjects.Where(p => p.Student == studentId);
@@ -842,6 +872,7 @@ namespace ManagingIndividualProjects.Controllers
             workBD.IndividualProjects.RemoveRange(projectsToDelete);
             workBD.Students.Remove(student);
             workBD.SaveChanges();
+            TempData["Notification"] = "Удачно.";
             return RedirectToAction("DeleteStudent");
         }
         public IActionResult DeleteEmployee()
@@ -867,6 +898,7 @@ namespace ManagingIndividualProjects.Controllers
             var employee = workBD.Employees.Find(employeeId);
             if (employee == null)
             {
+                TempData["Notification"] = "Ошибка.";
                 return RedirectToAction("DeleteEmployee");
             }
             if (employee.Role == 2)
@@ -881,6 +913,11 @@ namespace ManagingIndividualProjects.Controllers
             {
                 var employeeGroupsToDelete = workBD.EmployeeGroups.Where(eg => eg.TeacherId == employeeId);
                 workBD.EmployeeGroups.RemoveRange(employeeGroupsToDelete);
+                var groupsToUpdate = workBD.Groups.Where(g => g.ClassroomTeacher == employeeId);
+                foreach (var group in groupsToUpdate)
+                {
+                    group.ClassroomTeacher = null;
+                }
                 var subjectIDs = workBD.Subjects.Where(x => x.Teacherid == employeeId).Select(x => x.Id);
                 foreach (var subjectID in subjectIDs)
                 {
@@ -890,11 +927,14 @@ namespace ManagingIndividualProjects.Controllers
                         project.Subject = null;
                     }
                 }
+                var EmployeeGroupDelete = workBD.EmployeeGroups.Where(x => x.TeacherId == employeeId);
+                workBD.EmployeeGroups.RemoveRange(EmployeeGroupDelete);
                 var subjectsToDelete = workBD.Subjects.Where(s => s.Teacherid == employeeId);
                 workBD.Subjects.RemoveRange(subjectsToDelete);                
             }
             workBD.Employees.Remove(employee);
             workBD.SaveChanges();
+            TempData["Notification"] = "Удачно.";
             return RedirectToAction("DeleteEmployee");
         }
         public IActionResult DeleteSubject()
@@ -936,8 +976,10 @@ namespace ManagingIndividualProjects.Controllers
                     project.Subject = null;
                 }
                 workBD.Subjects.Remove(subject);
+                TempData["Notification"] = "Удачно.";
                 workBD.SaveChanges();
             }
+            
             return RedirectToAction("DeleteSubject");
         }
         public IActionResult DeleteGroup()
@@ -982,6 +1024,7 @@ namespace ManagingIndividualProjects.Controllers
                 workBD.Groups.Remove(group);
 
                 workBD.SaveChanges();
+                TempData["Notification"] = "Удачно.";
             }
             return RedirectToAction("DeleteGroup");
         }
@@ -1028,8 +1071,35 @@ namespace ManagingIndividualProjects.Controllers
                     workBD.EmployeeGroups.Remove(employeeGroup);
                     workBD.SaveChanges();
                 }
+                TempData["Notification"] = "Удачно.";
             }
             return RedirectToAction("DeleteGroupTeacher");
+        }
+        [HttpGet]
+        public IActionResult ExportAllTemplates()
+        {
+            var stream = new MemoryStream();
+            using (var archive = new ZipArchive(stream, ZipArchiveMode.Create, true))
+            {
+                AddTemplateToArchive(archive, "Импорт_Дисциплин.csv", new string[] { "Название предмета", "ФИО учителя" });
+                AddTemplateToArchive(archive, "Импорт_Студентов.csv", new string[] { "Фамилия", "Имя Отчество", "Логин", "Пароль", "Телефон" });
+                AddTemplateToArchive(archive, "Импорт_Учителей.csv", new string[] { "Фамилия", "Имя Отчество", "Логин", "Пароль", "Телефон" });
+                AddTemplateToArchive(archive, "Импорт_Классных_Руководителей(пользователь).csv", new string[] { "Фамилия", "Имя Отчество", "Логин", "Пароль", "Телефон" });
+                AddTemplateToArchive(archive, "Импорт_Групп.csv", new string[] { "Название группы", "ФИО Классного руководителя" });
+                AddTemplateToArchive(archive, "Привязка_Групп_К_Преподавателям(Преподаватели_которые_обучают_группу).csv", new string[] { "Название группы", "ФИО Преподавателя" });
+            }
+            stream.Position = 0;
+            return File(stream, "application/zip", "Templates.zip");
+        }
+        private void AddTemplateToArchive(ZipArchive archive, string fileName, string[] headers)
+        {
+            var entry = archive.CreateEntry(fileName);
+            using (var entryStream = entry.Open())
+            using (var writer = new StreamWriter(entryStream))
+            {
+                var headerLine = string.Join(";", headers);
+                writer.WriteLine(headerLine);
+            }
         }
     }
 }

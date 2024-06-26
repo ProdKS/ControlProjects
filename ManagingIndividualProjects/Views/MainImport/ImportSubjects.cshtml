@@ -10,6 +10,12 @@
         <form asp-action="ImportSubjects" method="post" enctype="multipart/form-data">
             <div class="card-body">
                 <div class="form-group">
+                    @{
+                        if (TempData["Notification"] != null)
+                        {
+                            <div class="alert alert-info">@TempData["Notification"]</div>
+                        }
+                    }
                     <label for="exampleInputFile">Выберите файл</label>
                     <div class="input-group">
                         <div class="custom-file">

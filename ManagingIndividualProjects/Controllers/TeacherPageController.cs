@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf;
 using System.Text.RegularExpressions;
 
 namespace ManagingIndividualProjects.Controllers
@@ -38,7 +40,21 @@ namespace ManagingIndividualProjects.Controllers
                 IsClassroom = hasClassroom,
                 Subjects = subjects,
                 Files = files,
+                ProjectGroupStatus = new Dictionary<int, bool>()
             };
+            foreach (var project in model.IndividualProjects)
+            {
+                var student = model.Students.FirstOrDefault(s => s.Id == project.Student);
+                if (student != null)
+                {
+                    var count = model.IndividualProjects
+                                     .Where(ip => ip.Subject == project.Subject &&
+                                                  (ip.Status == 1 || ip.Status == 4 || ip.Status == 5) &&
+                                                  model.Students.Any(s => s.Id == ip.Student && s.GroupDep == student.GroupDep))
+                                     .Count();
+                    model.ProjectGroupStatus[project.Id] = count >= 3;
+                }
+            }
             return View(model);
         }
         public async Task<IActionResult> AcceptProject(int IndividualProjectid)
@@ -233,6 +249,55 @@ namespace ManagingIndividualProjects.Controllers
             if (file == null)
                 return RedirectToAction("TeacherPage");
             return File(file.FileData, "application/zip", file.FileName);
+        }
+        public async Task<IActionResult> GenerateStatement(int projectID)
+        {
+            var project = await workBD.IndividualProjects.FindAsync(projectID);
+            if (project == null)
+            {
+                return RedirectToAction("TeacherPage");
+            }
+            var discipline = await workBD.Subjects.FindAsync(project.Subject);
+            if(discipline == null)
+            {
+                return RedirectToAction("TeacherPage");
+            }
+            var student = await workBD.Students.FindAsync(project.Student);
+            if (student == null)
+            {
+                return RedirectToAction("TeacherPage");
+            }
+
+            var group = await workBD.Groups.FindAsync(student.GroupDep);
+            if (group == null)
+            {
+                return RedirectToAction("TeacherPage");
+            }
+
+            using (var stream = new MemoryStream())
+            {
+                var pdf = new PdfDocument();
+                var page = pdf.AddPage();
+                var gfx = XGraphics.FromPdfPage(page);
+                var font = new XFont("Arial", 12);
+                var boldFont = new XFont("Arial", 12);
+                var rect = new XRect(50, 50, page.Width - 100, page.Height - 100);
+                var rightMargin = 240;
+                gfx.DrawString("Руководителю управления учебной работы", font, XBrushes.Black, new XRect(rect.Right - rightMargin, rect.Top, rightMargin, 20), XStringFormats.TopLeft);
+                gfx.DrawString("Федоровой А.В.", font, XBrushes.Black, new XRect(rect.Right - rightMargin, rect.Top + 20, rightMargin, 20), XStringFormats.TopLeft);
+                gfx.DrawString("студента гр. " + group.Name, font, XBrushes.Black, new XRect(rect.Right - rightMargin, rect.Top + 40, rightMargin, 20), XStringFormats.TopLeft);
+                gfx.DrawString($"{student.Surname} {student.Name} {student.Pat}", font, XBrushes.Black, new XRect(rect.Right - rightMargin, rect.Top + 60, rightMargin, 20), XStringFormats.TopLeft);           
+                gfx.DrawString("заявление", boldFont, XBrushes.Black, new XRect(rect.Left, rect.Top + 100, rect.Width, 20), XStringFormats.TopCenter);
+                gfx.DrawString($"Прошу разрешить выполнение индивидуального проекта по дисциплине {discipline.Name}", font, XBrushes.Black, new XRect(rect.Left, rect.Top + 140, rect.Width, 20), XStringFormats.TopLeft);
+                gfx.DrawLine(XPens.Black, rect.Left, rect.Top + 180, rect.Right, rect.Top + 180); // Увеличенное расстояние
+                gfx.DrawString("Дата:", font, XBrushes.Black, new XRect(rect.Left, rect.Top + 200, rect.Width / 2, 20), XStringFormats.TopLeft);
+                gfx.DrawString("Подпись:                       ", font, XBrushes.Black, new XRect(rect.Right - rect.Width / 2, rect.Top + 200, rect.Width / 2, 20), XStringFormats.TopRight);
+                gfx.DrawString("Согласие преподавателя данной дисциплины: __________________________________", font, XBrushes.Black, new XRect(rect.Left, rect.Top + 240, rect.Width, 20), XStringFormats.TopLeft);
+                gfx.DrawString("Подпись преподавателя: ____________________________________________________", font, XBrushes.Black, new XRect(rect.Left, rect.Top + 280, rect.Width, 20), XStringFormats.TopLeft);
+                pdf.Save(stream);
+                var fileName = $"Заявление_{student.Surname}_{student.Name}.pdf";
+                return File(stream.ToArray(), "application/pdf", fileName);
+            }
         }
     }
 }

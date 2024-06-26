@@ -11,6 +11,8 @@
             <form asp-action="AddProject" asp-controller="StudentPage" method="post">
                 <div class="card-body">
                     <div class="form-group">
+                        <h5 for="info">Зеленым цветом выделены фамилии преподавателей, у которых есть вакантные места для написания индивидуального проекта.</h5>
+                        <h5 for="info2">Если вы хотите выполнить проект под руководством преподавателя, у которого нет вакантных мест, необоходимо сформировать заявление.</h5>
                         <label for="inputThemeName">Тема вашего индивидуального проекта</label>
                         <input asp-for="nameTheme" class="form-control" id="inputThemeName" placeholder="Напишите тему">
                     </div>

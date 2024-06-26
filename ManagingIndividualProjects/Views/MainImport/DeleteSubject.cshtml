@@ -12,6 +12,12 @@
         <form asp-action="DeleteSubject" method="post">
             <div class="card-body">
                 <div class="form-group">
+                    @{
+                        if (TempData["Notification"] != null)
+                        {
+                            <div class="alert alert-info">@TempData["Notification"]</div>
+                        }
+                    }
                     <label for="myDropdown">Выберите дисциплину:</label>
                     <select id="myDropdown" name="subjectId" class="form-control">
                         @foreach (var subjectOption in Model.SubjectOptions)

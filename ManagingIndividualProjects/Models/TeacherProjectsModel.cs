@@ -7,5 +7,6 @@
         public List<Subject> Subjects { get; set; }
         public List<Student> Students { get; set; }
         public List<FilesStudent> Files { get; set; }
+        public Dictionary<int, bool> ProjectGroupStatus { get; set; }
     }
 }

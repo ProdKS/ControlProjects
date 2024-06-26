@@ -12,7 +12,13 @@
         <form asp-action="DeleteEmployee" method="post">
             <div class="card-body">
                 <div class="form-group">
-                    <label for="employeeDropdown">Выберите сотрудника:</label>
+                    @{
+                        if (TempData["Notification"] != null)
+                        {
+                            <div class="alert alert-info">@TempData["Notification"]</div>
+                        }
+                    }
+                    <label for="employeeDropdown">Выберите сотрудника:</label>                    
                     <select id="employeeDropdown" name="EmployeeId" class="form-control">
                         <option value="">Выберите...</option>
                         @foreach (var employee in Model.EmployeeOptions)

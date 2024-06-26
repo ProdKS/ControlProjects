@@ -17,27 +17,33 @@ namespace ManagingIndividualProjects.Controllers
         }
         public async Task<IActionResult> StudentPage()
         {
+            int groupStudent = Convert.ToInt32(HttpContext.Session.GetString("Group"));
             ViewBag.CurrentRole = Convert.ToInt32(HttpContext.Session.GetString("Role"));
-            int idStudent = Convert.ToInt32(HttpContext.Session.GetString("Id"));           
+            int idStudent = Convert.ToInt32(HttpContext.Session.GetString("Id"));
+
             var individualProject = await workBD.IndividualProjects.Where(x => x.Student == idStudent).ToListAsync();
             var files = workBD.FilesStudents.ToList();
             var listSubjects = workBD.Subjects.ToList();
             var listEmployees = workBD.Employees.ToList();
-            if (individualProject == null)
+
+            var teacherIDs = (from eg in workBD.EmployeeGroups
+                              where eg.GroupId == groupStudent
+                              select eg.TeacherId).ToList();
+
+            bool isTeacherBusy = (from ip in workBD.IndividualProjects
+                                  join s in workBD.Students on ip.Student equals s.Id
+                                  where ip.Status != 2 && s.GroupDep == groupStudent
+                                  select ip).Count() >= 3;
+
+            var model = new IndividualProjectModel
             {
-                return View();
-            }
-            else
-            {
-                workBD.Subjects.Include(x => x.Teacher);
-                var model = new IndividualProjectModel
-                {
-                    Subjects = listSubjects,
-                    IndividualProjects = individualProject,
-                    Files = files,
-                };
-                return View(model);
-            }            
+                Subjects = listSubjects,
+                IndividualProjects = individualProject,
+                Files = files,
+                IsTeacherBusy = isTeacherBusy // передача булевого значения о занятости преподавателя
+            };
+
+            return View(model);
         }
         public IActionResult AddProject()
         {
@@ -54,8 +60,9 @@ namespace ManagingIndividualProjects.Controllers
                                     SubjectName = s.Name,
                                     TeacherFullName = t.Surname + " " + t.Name + " " + t.Pat,
                                     ProjectCount = (from ip in workBD.IndividualProjects
-                                                    where ip.Subject == s.Id && ip.Status != 2
-                                                    select ip).Count()
+                                                    join stu in workBD.Students on ip.Student equals stu.Id
+                                                    where ip.Subject == s.Id && ip.Status != 2 && stu.GroupDep == groupStudent
+                                                    select ip).Count() >= 3
                                 }).ToList();
             var model = new IndividualProjectModel
             {
@@ -65,11 +72,10 @@ namespace ManagingIndividualProjects.Controllers
             foreach (var info in subjectInfos)
             {
                 string result = $"{info.SubjectName} ({info.TeacherFullName})";
-                string optionClass = info.ProjectCount > 4 ? "red" : "green";
-                model.SubjectOptions.Add(new SelectListItem { Value = info.SubjectID.ToString(), Text = result, });
+                string optionClass = info.ProjectCount ? "red" : "green";
+                model.SubjectOptions.Add(new SelectListItem { Value = info.SubjectID.ToString(), Text = result });
                 ViewData[info.SubjectID.ToString()] = optionClass;
             }
-
             return View(model);
         }
 
@@ -77,18 +83,26 @@ namespace ManagingIndividualProjects.Controllers
         public async Task<IActionResult> AddProjectAsync(IndividualProjectModel addingProjects)
         {
             int idStudent = Convert.ToInt32(HttpContext.Session.GetString("Id"));        
-            var project = new IndividualProject
+            if(addingProjects.nameTheme != null && addingProjects.SelectedOption != 0 && addingProjects != null)
             {
-                NameTheme = addingProjects.nameTheme,
-                Subject = addingProjects.SelectedOption,
-                Student = idStudent,
-                Status = 3,
-                Gradle = null,
-                Feedback = null
-            };
-            workBD.IndividualProjects.Add(project);
-            await workBD.SaveChangesAsync();
-            return RedirectToAction("StudentPage");                        
+                var project = new IndividualProject
+                {
+                    NameTheme = addingProjects.nameTheme,
+                    Subject = addingProjects.SelectedOption,
+                    Student = idStudent,
+                    Status = 3,
+                    Gradle = null,
+                    Feedback = null
+                };
+                workBD.IndividualProjects.Add(project);
+                await workBD.SaveChangesAsync();
+                return RedirectToAction("StudentPage");
+            }
+            else
+            {
+                RedirectToAction("AddProject");
+            }
+            return RedirectToAction("StudentPage");
         }
         public async Task<IActionResult> AboutFeedback(int idProject)
         {

@@ -12,6 +12,12 @@
         <form asp-action="DeleteGroupTeacher" method="post">
             <div class="card-body">
                 <div class="form-group">
+                    @{
+                        if (TempData["Notification"] != null)
+                        {
+                            <div class="alert alert-info">@TempData["Notification"]</div>
+                        }
+                    }
                     <label for="groupTeacherDropdown">Выберите группу и преподавателя:</label>
                     <select id="groupTeacherDropdown" name="selectedGroupTeacher" class="form-control">
                         @foreach (var option in Model.GroupTeacherOptions)

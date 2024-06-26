@@ -8,6 +8,12 @@
 <div class="container">
     <div class="card card-primary">
         <div class="card-header">
+            @{
+                if (TempData["Notification"] != null)
+                {
+                    <div class="alert alert-info">@TempData["Notification"]</div>
+                }
+            }
             <h3 class="card-title">Добавление дисциплины</h3>
         </div>
         <form asp-action="AddSubject" method="post">

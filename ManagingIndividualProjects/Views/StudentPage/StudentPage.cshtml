@@ -8,9 +8,9 @@
         {
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">У вас нет назначенного проекта</h5>
+                    <h5 class="card-title">У вас не выбрана тема индивидуального проекта</h5>
                     <p class="card-text">
-                        Вы можете предложить тему и выбрать дисциплину самостоятеньно.
+                        Вы можете подать заявку и выбрать дисциплину самостоятеньно.
                     </p>
                     <a href="@Url.Action("AddProject", "StudentPage")" class="card-link">Подать заявку</a>
                 </div>
@@ -129,13 +129,19 @@
                                         @{
                                             bool haveCheckedProjects = Model.IndividualProjects.Any(p => p.Status == 1 || p.Status == 4 || p.Status == 5);
                                         }
+                                        @if (Model.IsTeacherBusy && IndividualProject.Status == 3)
+                                        {
+                                            <a href="@Url.Action("GenerateStatement", "TeacherPage", new { projectID = IndividualProject.Id })" class="btn btn-sm btn-primary">
+                                                <i class="fas fa-user"></i> Сформировать заявление
+                                            </a>
+                                        }
                                         @if (haveCheckedProjects != true)
                                         {
                                             <a href="@Url.Action("DeleteProject", "StudentPage", new { projectID = IndividualProject.Id })" class="btn btn-sm btn-primary" style="background-color: red; float: right">
                                                 <i class="fas fa-user"></i> Удалить
                                             </a>
                                         }
-                                    </div>
+                            </div>
                                                              
                                 </div>                                
                             </div>
